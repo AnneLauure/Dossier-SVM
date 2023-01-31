@@ -31,4 +31,21 @@ Voici un aperçu de notre base de données :
 |161936.0|	Pandemic Legacy: Season 1|	2015.0|	2|	4|	60|	13|	41643|	8.61|2	|2.84	|65294.0|	Action Points, Cooperative Game, Hand Manageme...|	Strategy Games, Thematic Games|
 |224517.0|	Brass: Birmingham|	2018.0|	2|	4|	120|	14	|19217|	8.66|	3	|3.91|	28785.0|	Hand Management, Income, Loans, Market, Networ...|	Strategy Games|
 
+On ne conserve pas la variable *ID*, cette variable n'est pas pertinente pour la prédiction de la variable *Rating Average*. En effet, l'identifiant n'a aucun impact sur la note d'un jeu de société. 
+
+## II. Analyse Exploratoire
+
+### A) Analyse des valeurs manquantes
+
+Nous avons tout d'abord regarder les valeurs manquantes pour chacune de nos variables. Nous constatons qu'il manque des valeurs pour 4 de nos variables : *Yr_Published, Owned_users Mechanics* ainsi que la variable *Domains*. 
+
+Il manque une seule valeur pour la variable d'année de publication. C'est pour le jeu 'Hus' que cette information n'est pas renseigné. On remarque également qu'il manque d'autres informations, dont le nombre d'utilisateurs qui ont le jeu, la mécanique et le domaine. Il ne semble donc pas pertinent de concerver ce jeu, on le supprime notre base de données.
+
+On constate que pour les observations pour lesquelles il manque le nombre d'utilisateurs qui possède du jeu, il manque également le domaine et pour la plupart la mécanique de jeu. On supprime donc les jeux pour lesquels cette valeur n'est pas renseignée (22 valeurs).
+
+En ce qui concerne la variable *Domains*, il manque plus de 10 000 observations soit quasiment la moitié des données. Nous faisons tout de même le choix de conserver cette dernière, puisque nous avons un assez grand nombre donné et que cette variable pourrais être pertinente afin de prédire la note moyenne du jeu. Nous supprimons ainsi les jeux pour lesquels le domaine n'est pas renseigné.  
+
+Nous faisons de même pour les 475 valeurs manquantes de la variable *Mechanics*. Il aurait été intéressant d'imputer ses valeurs manquantes par le mode. Néanmoins, cela ne serait pas forcément pertinent puisqu'un jeu peut avoir plusieurs mécaniques différentes. 
+
+Finalement, nous obtenons une base constituée de 9 703 jeux de sociétés.
 
