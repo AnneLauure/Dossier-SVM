@@ -53,7 +53,7 @@ Finalement, nous obtenons une base constituée de 9 703 jeux de sociétés.
 
 Regardons maintenant s'il existe des valeurs atypiques pour les variables quantitatives. Pour ce faire, nous avons tracer les boxplot de ces variables : 
 
-*Graphique N°1 : Boxplot des variables qauntitatives*
+*Graphique N°1 : Boxplot des variables quantitatives*
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/fig_2_intuition_svm.jpeg" alt="fig_2_intuition_svm" style="width:1400px;"/>
 
 - **Year_Published**
@@ -98,5 +98,22 @@ Les jeux sont notés de 0 à 5. Il y a 16 jeux pour lesquels le niveau de comple
 
 Après réflexion, même si la moyenne et la médiane sont assez éloigné on fait le choix de garder l'ensemble de ses observations. 
 
+Finalement, notre dataset est composée de 9 302 observations.
+
 ### C) Corrélation entre les variables quantitatives
+
+Afin de voir les liens entre nos différentes variables explicatives, nous avons représenté la matrice de corrélation :
+
+*Figure N°1 : Matrice de corrélation*
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/corrélation.jpeg" alt="corrélation" style="width:1400px;"/>
+
+On note 3 couples de variables fortement corrélées : 
+
+- La complexité moyenne (*Complexity_avg*) et le temps de jeu (*Play_Time*) sont corrélés positivement. 
+
+- L'âge minimum (*Min_age*) et la complexité moyenne (*Complexity_avg*) sont aussi corrélés positivement. 
+
+- Le nombre de joueurs qui déclarent posséder le jeu (*Owned_users*) et le nombre de joueurs qui ont attribué une note au jeu (Users_rated) très fortement corrélées (0,96). On fait donc le choix de ne conserver que le nombre de joueurs qui possèdent le jeu. On écarte le nombre de votants, car c'est la variable la moins pertinente des deux à conserver puisqu'on peut supposer que le nombre de votants intervient dans le calcul de la variable que nous cherchons à prédire qui est la note moyenne.
+
+
 
