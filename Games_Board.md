@@ -77,3 +77,23 @@ Le temps de jeu minimum est de 0. Ce sont probablement des erreurs de saisies ou
 La variable *Play_Time* présente beaucoup d'observations qui semblent atypiques. Le temps de jeu maximal est de 60 000 minutes, soit 1 000 heures. C'est bien supérieur au temps de 75 % des jeux qui est de 120 minutes. De plus, la moyenne est plus de 2 fois supérieures à la médiane.
 
 Lorsqu'il y a un temps de jeu maximum, c'est celui-ci qui est indiqué dans la base de données. C'est pourquoi certains jeux ont des temps de jeu particulièrement élevé. On remarque que les jeux avec les temps de jeu les plus élevés sont des jeux de la catégorie wargames. Les jeux de guerres sont généralement des jeux de plateaux qui peuvent être parfois très long. L'ensemble des temps de jeux très longs ne sont donc pas des valeurs aberrantes. On peut toutefois soupçonner des valeurs comme 60 000 d'être aberrantes. On fait donc le choix de supprimer les jeux qui durent plus de 24h soit 1440 minutes.
+
+- **Min_age**
+
+On constate que l'âge minimum n'est pas renseigné pour un certains nombre de jeux. On leur attribut un âge en fonction de leur domaine. La majorité des jeux dont l'âge minimum est manquant possèdent un seul domaine. Par conséquent, on leur attribut l'âge médian du domaine auquel ils appartiennent. Pour les jeux pour lesquels il reste des âges minimum à 0, ils combinent plusieurs domaines de jeu. On leur attribue donc la médiane de l'ensemble des jeux du dataset.
+
+- **Users_rated**
+
+La variable *Users_rated* correspond au nombre d'utilisateurs qui ont évalué le jeu. On observe une grande différence entre la moyenne et la médiane, cependant, on décide dans un premier temps de conserver l'ensemble de ces observations. En effet, il y a quelques variables qui ont beaucoup plus de votes que la médiane, mais il s'agit de jeux très populaires (Catan par exemple) dont on ne souhaite pas se séparer.
+
+- **Rating_avg**
+
+Les jeux sont notés de 0 à 10. On remarque que la moyenne et la médiane sont relativement proches. On décide de conserver l'ensemble des observations de cette variable. Il nous semble pertinent de chercher à comprendre les valeurs tant faibles qu'élevées de cette variable. C'est également la variable que l'on souhaite prédire.
+
+- **Complexity_avg**
+
+Les jeux sont notés de 0 à 5. Il y a 16 jeux pour lesquels le niveau de complexité est de 0. Il s'agit de jeu pour lequel les utilisateurs de bgg n'ont pas noté la complexité donc on supprime ces jeux. La complexité moyenne des jeux de notre dataset est de 2.31.
+
+- **Owned_users**
+
+Après réflexion, même si la moyenne et la médiane sont assez éloigné on fait le choix de garder l'ensemble de ses observations. 
