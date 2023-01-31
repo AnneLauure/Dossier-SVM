@@ -56,7 +56,7 @@ Regardons maintenant s'il existe des valeurs atypiques pour les variables quanti
 *Graphique N°1 : Boxplot des variables qauntitatives*
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/fig_2_intuition_svm.jpeg" alt="fig_2_intuition_svm" style="width:1400px;"/>
 
-- **Yr_Published**
+- **Year_Published**
 
 Les dates de publication des jeux de société sont entre -3500 et 2021. Lorsque l'on observe les jeux pour lesquels la date est négative, on constate qu'il s'agit de jeux traditionnels, par exemple, on y retrouve le jeu de go. Il ne s'agit donc pas nécessairement de valeur aberrante. On fait le choix de ne conserver que les jeux contemporains. Pour ce faire, on supprime les jeux créés avant le 19ème siècle (1800).
 
@@ -97,3 +97,6 @@ Les jeux sont notés de 0 à 5. Il y a 16 jeux pour lesquels le niveau de comple
 - **Owned_users**
 
 Après réflexion, même si la moyenne et la médiane sont assez éloigné on fait le choix de garder l'ensemble de ses observations. 
+
+### C) Corrélation entre les variables quantitatives
+
