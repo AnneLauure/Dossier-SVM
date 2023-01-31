@@ -53,6 +53,5 @@ Finalement, nous obtenons une base constituée de 9 703 jeux de sociétés.
 
 Examinons si il existe des valeurs atypiques pour les variables quantitatives. Pour ce faire, nous avons tracer leur boxplot : 
 
-<img src="https://github.com/Roulitoo/cours_iae/blob/master/01_SVM/img/fig_7_regularisation_critere.png" alt="fig_7_regularisation_critere" style="width:1400px;"/>
-
+<img src="https://github.com/AnneLauure/Dossier-SVM/image/fig_2_intuition_svm.jpeg" alt="fig_2_intuition_svm" style="width:1400px;"/>
 
