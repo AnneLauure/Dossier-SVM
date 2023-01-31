@@ -6,7 +6,7 @@ Notre étude s'appuie sur un dataset de jeux de société provenant du site Kagg
 
 - **ID**: Identifiant BoardGamesGeek
 - **Name** : Nom du jeu de société
-- **Year Published** : Année de publication du jeu sur BoardGamesGeek
+- **Year Published** : Année de publication du jeu 
 - **Min Players** : Nombre minimum de joueurs suggérés
 - **Max Players** : Nombre maximum de joueurs suggérés
 - **Play Time** : Temps de jeu moyen suggéré par les créateurs de jeux
@@ -51,7 +51,19 @@ Finalement, nous obtenons une base constituée de 9 703 jeux de sociétés.
 
 ### B) Analyse des valeurs atypiques
 
-Examinons si il existe des valeurs atypiques pour les variables quantitatives. Pour ce faire, nous avons tracer leur boxplot : 
+Regardons maintenant s'il existe des valeurs atypiques pour les variables quantitatives. Pour ce faire, nous avons tracer les boxplot de ces variables : 
 
-<img src="https://github.com/AnneLauure/Dossier-SVM/image/fig_2_intuition_svm.jpeg" alt="fig_2_intuition_svm" style="width:1400px;"/>
+*Graphique N°1 : Boxplot des variables qauntitatives*
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/fig_2_intuition_svm.jpeg" alt="fig_2_intuition_svm" style="width:1400px;"/>
 
+- **Yr_Published**
+
+
+
+
+
+Les dates de publication des jeux de société sont entre -3500 et 2021.
+
+Lorsque l'on observe les jeux pour lesquels la date est négative, on constate qu'il s'agit de jeux traditionnels, par exemple on y retrouve le jeu de go. Il ne s'agit donc pas nécessairement de valeur aberrante.
+
+On fait le choix de ne conserver que les jeux contemporains. Pour ce faire, on supprime les jeux créés avant le 19ème siècle (1800).
