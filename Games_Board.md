@@ -58,12 +58,22 @@ Regardons maintenant s'il existe des valeurs atypiques pour les variables quanti
 
 - **Yr_Published**
 
+Les dates de publication des jeux de société sont entre -3500 et 2021. Lorsque l'on observe les jeux pour lesquels la date est négative, on constate qu'il s'agit de jeux traditionnels, par exemple, on y retrouve le jeu de go. Il ne s'agit donc pas nécessairement de valeur aberrante. On fait le choix de ne conserver que les jeux contemporains. Pour ce faire, on supprime les jeux créés avant le 19ème siècle (1800).
 
+L'année de publication, avec des valeurs négatives est assez difficile à interpréter. Nous avons donc fait le choix de créer une nouvelle variable qui représente l'age du jeu que l'on nomme *Age*. Les données ayant été collectées en février 2021, on calcul l'âge du jeu à la date où les données ont été collectées. L'âge moyen des jeux de société est de 18 ans. Le Perudo ainsi que le Casino sont les jeux contemporains les plus anciens de notre base de données.
 
+- **Max_players et Min_players**
 
+On constate qu'il existe des jeux dans la base de données pour lesquels le nombre de joueurs minimum et le nombre de joueurs maximum sont nuls. On supprime ces jeux car il s'agit de valeurs aberrantes. En effet, pour jouer à un jeu de société,il faut au minimum être 1 joueur.
 
-Les dates de publication des jeux de société sont entre -3500 et 2021.
+Il y a une observation pour laquelle le nombre de joueurs minimum est de 10. Il s'agit d'un jeu (haggle) qui demande effectivement d'être nombreux pour pouvoir y jouer (cf bgg). Même si cette valeur peut être considérée comme atypique, on fait le choix de la garder, car cela peut avoir un impact important sur la note du jeu. Il faut en moyenne au minimum 2 joueurs pour jouer aux jeux de notre base de données.
 
-Lorsque l'on observe les jeux pour lesquels la date est négative, on constate qu'il s'agit de jeux traditionnels, par exemple on y retrouve le jeu de go. Il ne s'agit donc pas nécessairement de valeur aberrante.
+On constate qu'il y a deux jeux (Pit Fighter: Fantasy Arena	 et Black Powder: Second Edition) pour lesquels le maximum de joueurs est de plus de 100. Ces sont tous les deux des jeux de Guerres. Lorsqu'un jeu n'a pas de maximum de joueurs indiqué, il est souvent considéré que le maximum est de 99 ou 100. On décide donc de corriger ces valeurs en leur attribuant la valeur de 100.
 
-On fait le choix de ne conserver que les jeux contemporains. Pour ce faire, on supprime les jeux créés avant le 19ème siècle (1800).
+- **Play_Time**
+
+Le temps de jeu minimum est de 0. Ce sont probablement des erreurs de saisies ou des informations manquantes. Le temps de jeu correspond au temps moyen suggéré par les créateurs des jeux. On supprime ainsi les jeux pour lesquels le temps de jeu est nul.
+
+La variable *Play_Time* présente beaucoup d'observations qui semblent atypiques. Le temps de jeu maximal est de 60 000 minutes, soit 1 000 heures. C'est bien supérieur au temps de 75 % des jeux qui est de 120 minutes. De plus, la moyenne est plus de 2 fois supérieures à la médiane.
+
+Lorsqu'il y a un temps de jeu maximum, c'est celui-ci qui est indiqué dans la base de données. C'est pourquoi certains jeux ont des temps de jeu particulièrement élevé. On remarque que les jeux avec les temps de jeu les plus élevés sont des jeux de la catégorie wargames. Les jeux de guerres sont généralement des jeux de plateaux qui peuvent être parfois très long. L'ensemble des temps de jeux très longs ne sont donc pas des valeurs aberrantes. On peut toutefois soupçonner des valeurs comme 60 000 d'être aberrantes. On fait donc le choix de supprimer les jeux qui durent plus de 24h soit 1440 minutes.
