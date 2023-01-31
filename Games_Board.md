@@ -49,3 +49,9 @@ Nous faisons de même pour les 475 valeurs manquantes de la variable *Mechanics*
 
 Finalement, nous obtenons une base constituée de 9 703 jeux de sociétés.
 
+### B) Analyse des valeurs atypiques
+
+Examinons si il existe des valeurs atypiques pour les variables quantitatives. Pour ce faire, nous avons tracer leur boxplot : 
+
+
+
