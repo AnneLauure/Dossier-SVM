@@ -115,5 +115,13 @@ On note 3 couples de variables fortement corrélées :
 
 - Le nombre de joueurs qui déclarent posséder le jeu (*Owned_users*) et le nombre de joueurs qui ont attribué une note au jeu (Users_rated) très fortement corrélées (0,96). On fait donc le choix de ne conserver que le nombre de joueurs qui possèdent le jeu. On écarte le nombre de votants, car c'est la variable la moins pertinente des deux à conserver puisqu'on peut supposer que le nombre de votants intervient dans le calcul de la variable que nous cherchons à prédire qui est la note moyenne.
 
+### D) Traitement des variables qualitatives
 
+Nous avons deux variables qualitatives dans notre dataset : *Mechanics* et *Domains*.
+
+- **Mechanics**
+
+La variable *Mechanics* indique les différentes mécaniques de jeux qui peuvent être utilisées dans le jeu. Certains jeux on plus d'une mécanique qui interviennent. Au maximun un jeu peut avoir 19 mécaniques. Il y a 182 mécaniques de jeu différentes.
+
+On créer une variables correspondant au nombre de mécaniques par jeux. On peut supposer que c'est une varaible qui pourrait avoir un impact sur la popularité du jeu, soit parce qu'un jeu avec trop de mécanique serait difficile d'accès pour un large public soit parce qu'il permet d'avoir différente dynamique au cours d'une partie qui rendent attrayant ce jeu.
 
