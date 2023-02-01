@@ -39,11 +39,11 @@ On ne conserve pas la variable *ID*, cette variable n'est pas pertinente pour la
 
 Nous avons tout d'abord regarder les valeurs manquantes pour chacune de nos variables. Nous constatons qu'il manque des valeurs pour 4 de nos variables : *Yr_Published, Owned_users Mechanics* ainsi que la variable *Domains*. 
 
-Il manque une seule valeur pour la variable d'année de publication. C'est pour le jeu 'Hus' que cette information n'est pas renseigné. On remarque également qu'il manque d'autres informations, dont le nombre d'utilisateurs qui ont le jeu, la mécanique et le domaine. Il ne semble donc pas pertinent de concerver ce jeu, on le supprime notre base de données.
+Il manque une seule valeur pour la variable d'année de publication. C'est pour le jeu 'Hus' que cette information n'est pas renseignée. On remarque également qu'il manque d'autres informations, dont le nombre d'utilisateurs qui ont le jeu, la mécanique et le domaine. Il ne semble donc pas pertinent de concerver ce jeu, on le supprime de notre base de données.
 
 On constate que pour les observations pour lesquelles il manque le nombre d'utilisateurs qui possède du jeu, il manque également le domaine et pour la plupart la mécanique de jeu. On supprime donc les jeux pour lesquels cette valeur n'est pas renseignée (22 valeurs).
 
-En ce qui concerne la variable *Domains*, il manque plus de 10 000 observations soit quasiment la moitié des données. Nous faisons tout de même le choix de conserver cette dernière, puisque nous avons un assez grand nombre donné et que cette variable pourrais être pertinente afin de prédire la note moyenne du jeu. Nous supprimons ainsi les jeux pour lesquels le domaine n'est pas renseigné.  
+En ce qui concerne la variable *Domains*, il manque plus de 10 000 observations soit quasiment la moitié des données. Nous faisons tout de même le choix de conserver cette dernière, puisque nous avons un assez grand nombre de données et que cette variable pourrais être pertinente afin de prédire la note moyenne du jeu. Nous supprimons ainsi les jeux pour lesquels le domaine n'est pas renseigné.  
 
 Nous faisons de même pour les 475 valeurs manquantes de la variable *Mechanics*. Il aurait été intéressant d'imputer ses valeurs manquantes par le mode. Néanmoins, cela ne serait pas forcément pertinent puisqu'un jeu peut avoir plusieurs mécaniques différentes. 
 
