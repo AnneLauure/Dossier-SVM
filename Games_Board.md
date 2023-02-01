@@ -72,11 +72,11 @@ On constate qu'il y a deux jeux (Pit Fighter: Fantasy Arena	 et Black Powder: Se
 
 - **Play_Time**
 
-Le temps de jeu minimum est de 0. Ce sont probablement des erreurs de saisies ou des informations manquantes. Le temps de jeu correspond au temps moyen suggéré par les créateurs des jeux. On supprime ainsi les jeux pour lesquels le temps de jeu est nul.
+Le temps de jeu minimum est nul. Les jeux avec un temps de jeu nul sont probablement des erreurs de saisies ou des informations manquantes. On supprime ainsi les jeux pour lesquels le temps de jeu est nul. Le temps de jeu correspond au temps moyen suggéré par les créateurs des jeux. Le temps de jeu peut être défini comme un intervalle entre le temps minimimum et le temps maximum de jeu. Lorsque le temps est un intervalle, la valeur que l'on retrouve dans la base de données est la borne maximale. 
 
-La variable *Play_Time* présente beaucoup d'observations qui semblent atypiques. Le temps de jeu maximal est de 60 000 minutes, soit 1 000 heures. C'est bien supérieur au temps de 75 % des jeux qui est de 120 minutes. De plus, la moyenne est plus de 2 fois supérieures à la médiane.
+La variable *Play_Time* présente beaucoup d'observations qui semblent atypiques. Le temps de jeu maximal est de 60 000 minutes, soit 1 000 heures. C'est bien supérieur au temps des 75 % des jeux les moins long qui est de 120 minutes. De plus, la moyenne est plus de 2 fois supérieures à la médiane.
 
-Lorsqu'il y a un temps de jeu maximum, c'est celui-ci qui est indiqué dans la base de données. C'est pourquoi certains jeux ont des temps de jeu particulièrement élevé. On remarque que les jeux avec les temps de jeu les plus élevés sont des jeux de la catégorie wargames. Les jeux de guerres sont généralement des jeux de plateaux qui peuvent être parfois très long. L'ensemble des temps de jeux très longs ne sont donc pas des valeurs aberrantes. On peut toutefois soupçonner des valeurs comme 60 000 d'être aberrantes. On fait donc le choix de supprimer les jeux qui durent plus de 24h soit 1440 minutes.
+Lorsqu'il y a un temps de jeu maximum, c'est celui-ci qui est indiqué dans la base de données. C'est pourquoi certains jeux ont des temps de jeu particulièrement élevé. On remarque que les jeux avec les temps de jeu les plus élevés sont majoritairement des jeux de la catégorie wargames. Lorsque l'on s'intéresse à la description de ceratins de ces jeux sur le site BoardGameGeek, les jeux de guerres sont généralement des jeux de plateaux qui peuvent être parfois très long. L'ensemble des temps de jeux très longs ne sont donc pas des valeurs aberrantes. On peut toutefois soupçonner des valeurs comme 60 000 d'être aberrantes. On fait donc le choix de supprimer uniquement les jeux qui durent plus de 24h soit 1440 minutes.
 
 - **Min_age**
 
