@@ -125,3 +125,4 @@ La variable *Mechanics* indique les différentes mécaniques de jeux qui peuvent
 
 On créer une variables correspondant au nombre de mécaniques par jeux. On peut supposer que c'est une varaible qui pourrait avoir un impact sur la popularité du jeu, soit parce qu'un jeu avec trop de mécanique serait difficile d'accès pour un large public soit parce qu'il permet d'avoir différente dynamique au cours d'une partie qui rendent attrayant ce jeu.
 
+bb
