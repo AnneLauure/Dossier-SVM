@@ -100,6 +100,34 @@ Après réflexion, même si la moyenne et la médiane sont assez éloigné on fa
 
 Finalement, notre dataset est composée de 9 302 observations.
 
+### C) Traitement des variables qualitatives
+
+Notre dataset contient 2 variables qualitatives : *Mechanics* et *Domains*.
+
+- **Mechanics**
+
+La variable *Mechanics* indique les différentes mécaniques de jeu qui peuvent être utilisées dans le jeu. Certains jeux ont plus d'une mécanique qui intervient. Il y a 182 mécaniques de jeu différentes. Un jeu peut avoir plusieurs mécaniques (au maximum 19)
+
+Dans un premier temps on créer une variables correspondant au nombre de mécaniques par jeux. On peut supposer que c'est une variable qui pourrait avoir un impact sur la popularité du jeu, soit parce qu'un jeu avec trop de mécanique serait difficile d'accès pour un large public soit parce qu'il permet d'avoir différente dynamique au cours d'une partie qui rendent attrayant ce jeu.
+
+Dans un second temps on créer des variables binaires pour les mécaniques les plus communes pour savoir si le jeu appartient ou non à une mécanique. Il ne paraît pas pertinent de construire une variable par mécanique, cela représenterait trop de variables et certaines mécaniques ne sont pas suffisamment représentées. Nous gardons ainsi les mécaniques de jeux dont la fréquence d'apparition est supérieure à 930,2 (10 % du nombre de jeux total dans notre dataset). Les mécaniques de jeux les plus communes sont les suivantes : *Dice Rolling*, *Hexagon Grid*, *Hand Management*, *Simulation*, *Variable Player Powers*, *Set Collection* ainsi que *Grid Movement*. Nous créons ainsi une variable binaire (au total 7) pour chacune de ses mécaniques. 
+
+Nous avons également cherché si l’on pouvait procéder à certains regroupements de mécaniques. Par exemple, les jeux d'enchères sont séparés dans différentes catégories donc nous regardons combien de jeux sont dans ces catégories afin de voir s'il peut être pertinent de les regrouper pour en faire une catégorie unique.
+
+- Nous avons regroupé les mécaniques pour lesquelles le mot “map” apparaît, soit 74 jeux, cela représente 0.796 % des jeux de la base de données. Ainsi il y a trop peu de jeux utilisant des cartes (map) pour qu'il soit pertinent de créer une variable pour ce type de jeu.
+
+- Au total, 3 437 jeux utilisent un dé, soit 36.95 % des jeux de la base de données. Comme nous avons déjà créé une variable “Dice Rolling” auparavant nous ajoutons à cette dernière les autres mécaniques contenant le mot “Dice”. On renomme cette variable *Dice*.
+
+- Il y a 137 jeux de Turn order. Cela représente 1.473 % des jeux de la base de données. Il y a trop peu de jeux de turn order pour que cela soit pertinent de créer une variable pour cette mécanique.
+
+- Les jeux possédant une mécanique contenant le mot “Action” représentent 14.61 % des jeux de la base de données. Ainsi, nous créons une variable binaire intitulé *Action*
+
+- Il y a 508 jeux d'enchères, soit 5.46 % des jeux de la base de données. Il y a trop peu de jeux d'enchères pour que cela soit pertinent de créer une variable pour cette mécanique
+
+- Il y a 1193 jeux d'action. Cela représente 12.82 % des jeux de la base de données. On créer une variable binaire *Map*. Cette variable prend la valeur de 1 si le jeu à une mécanique contenant le mot “Map”.
+
+Finalement pour la variable *Mechanics* Nous avons créé un 9 variables binaires ainsi qu'une variable quantitative représentant le nombre de mécaniques par jeu. 
+
 ### C) Corrélation entre les variables quantitatives
 
 Afin de voir les liens entre nos différentes variables explicatives, nous avons représenté la matrice de corrélation :
@@ -117,12 +145,4 @@ On note 3 couples de variables fortement corrélées :
 
 ### D) Traitement des variables qualitatives
 
-Nous avons deux variables qualitatives dans notre dataset : *Mechanics* et *Domains*.
 
-- **Mechanics**
-
-La variable *Mechanics* indique les différentes mécaniques de jeux qui peuvent être utilisées dans le jeu. Certains jeux on plus d'une mécanique qui interviennent. Au maximun un jeu peut avoir 19 mécaniques. Il y a 182 mécaniques de jeu différentes.
-
-On créer une variables correspondant au nombre de mécaniques par jeux. On peut supposer que c'est une varaible qui pourrait avoir un impact sur la popularité du jeu, soit parce qu'un jeu avec trop de mécanique serait difficile d'accès pour un large public soit parce qu'il permet d'avoir différente dynamique au cours d'une partie qui rendent attrayant ce jeu.
-
-bb
