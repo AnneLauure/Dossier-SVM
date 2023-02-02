@@ -128,12 +128,16 @@ Nous avons également cherché si l’on pouvait procéder à certains regroupem
 
 Finalement pour la variable *Mechanics* Nous avons créé un 9 variables binaires ainsi qu'une variable quantitative représentant le nombre de mécaniques par jeu. 
 
-### C) Corrélation entre les variables quantitatives
+- **Domains**
+
+La variable *Domains* indique les genres des jeux de société. Tout comme pour la variable *mécanique* on créer une variable quantitative représentant le nombre de domaines par jeu. Un jeu peut avoir plusieurs domaines différents (au maximum 3). Plus de 75 % des jeux de sociétés, ne possèdent qu’un seul domaine. Il y a  8 domaines différents parmi les jeux de la base de données : *Abstract Games*, *Children's Games*, *Customizable Games*, *Family Games*, *Party Games*, *Strategy Games*, *Thematic Games* et *Wargames*. Parmi les jeux de notre dataset on retrouve une majorité de jeux de guerres suivis de jeux de stratégie et de jeux familiaux. Nous créons ainsi une variable binaire pour chacun de ses 8 domaines.
+
+### D) Corrélation entre les variables quantitatives
 
 Afin de voir les liens entre nos différentes variables explicatives, nous avons représenté la matrice de corrélation :
 
 *Figure N°1 : Matrice de corrélation*
-<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/corrélation.jpeg" alt="corrélation" style="width:1400px;"/>
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation.jpeg" alt="corrélation" style="width:1400px;"/>
 
 On note 3 couples de variables fortement corrélées : 
 
@@ -143,6 +147,6 @@ On note 3 couples de variables fortement corrélées :
 
 - Le nombre de joueurs qui déclarent posséder le jeu (*Owned_users*) et le nombre de joueurs qui ont attribué une note au jeu (Users_rated) très fortement corrélées (0,96). On fait donc le choix de ne conserver que le nombre de joueurs qui possèdent le jeu. On écarte le nombre de votants, car c'est la variable la moins pertinente des deux à conserver puisqu'on peut supposer que le nombre de votants intervient dans le calcul de la variable que nous cherchons à prédire qui est la note moyenne.
 
-### D) Traitement des variables qualitatives
+
 
 
