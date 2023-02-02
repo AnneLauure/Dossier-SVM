@@ -137,7 +137,7 @@ La variable *Domains* indique les genres des jeux de société. Tout comme pour 
 Afin de voir les liens entre nos différentes variables explicatives, nous avons représenté la matrice de corrélation :
 
 *Figure N°1 : Matrice de corrélation*
-<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation.jpeg" alt="corrélation" style="width:1400px;"/>
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation.jpeg" alt="correlation.jpeg" style="width:1400px;"/>
 
 On note 3 couples de variables fortement corrélées : 
 
