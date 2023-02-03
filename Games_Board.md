@@ -166,6 +166,13 @@ On note 4 couples de variables fortement corrélées :
 
 En moyenne, les jeux de société de notre dataset ont une note moyenne de 6,62/10. Le jeu de guerre *Company of Heroes* à obtenu la note moyenne maximale. À l’inverse, *Quidditch : The Game* (jeu pour enfant) possède la note moyenne minimum. De plus, on constate que la moyenne et la médiane sont très proches. 
 
+### F) Corrélation des variables quantitatives avec la variable *Rating_avg*
+
+*Figure N°2 : Matrice de corrélation*
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation_y.jpeg" alt="correlation_y" style="width:1400px;"/>
+
+La variable *BGG_rank*, est la variable qui impact le plus la note moyenne d’un jeu. Plus, le jeu va être positionnés en haut du classement, plus la note moyenne sera élevée. La complexité ainsi que l’âge minimal recommandé pour y jouer à également un impact relativement important sur la note moyenne du jeu. Cela peut s’expliquer par le fait que notre dataset possède une majorité de jeux de guerre. Ce sont des jeux de stratégie donc assez complexes et forcément avec un âge minimum plus important
+
 ## III. Modélisation
 
 L'objecti de notre modélisatoin est de prédire la note moyenne des jeux de société. Pour ce faire on estime deux types de modèle, dans un premier temps on applique un SVR puis on applique un réseau de neurones.  
