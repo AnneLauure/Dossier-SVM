@@ -152,7 +152,7 @@ On note 4 couples de variables fortement corrélées :
 ### E) ** Statistiques descriptives de *Rating_avg* **
 
 *Tableau N°2 :  Statistiques descriptives de la variable Rating_avg*
-
+|Stats|valeurs|
 |-:|-------:|
 |count|    9302.000000|
 |mean|       6.626050|
