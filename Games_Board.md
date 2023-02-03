@@ -184,11 +184,16 @@ Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel l
 
 On cherche à optimiser les hyperparamètres du SVR avec kernel rbf à l’aide d’un GridSearch. Le score mesuré par le GridSearch est le R2 du modèle. On obtient le modèle le plus performant avec les hyperparamètres suivants : C=10 et epsilon=0.1. 
 
-*Figure N°3 : Evolution du score selon les paramètres*
+*Figure N°4 : Evolution du score selon les paramètres*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/params.png" alt="params" style="width:600px;"/>
 
 On trace les courbes d’apprentissage associée au modèle. Cela permet de constater que plus on a de données mieux le modèle apprend. EN effet, on constate qu’à mesure que l’on rajoute des données, l’erreur du jeu de validation diminue et se rapproche de celle du jeu d’apprentissage.
+
+*Figure N°5 : Courbes d'apprentissage*
+
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/learning%20curve.png" alt="learning%20curve" style="width:600px;"/>
+
 
 On fit le modèle à partir des paramètres issus du GridSearch. On mesure le score réalisé par le modèle sur les deux jeux de données à l’aide du R2. Le score obtenu sur le jeu d’entraînement est de 0,93 et celui obtenu sur le jeu test est de 0,83. Le mse obtenu est de 0.11, soit un mse plus faible que celui obtenu avant de tuner les hyperparamètres. L’application du GridSearch a donc permis d’améliorer le modèle.
 
