@@ -177,6 +177,7 @@ Préalablement à la modélisation, on procède à un rééchantillonnage. On di
 Le premier modèle que nous appliquons est un *SVR* (Support Vector Regression). Les SVR sont des modèles qui appartiennent à la famille de l’apprentissage supervisé. Les SVR permettent de modéliser des relations linéaires mais aussi non linéaires. Le SVM pour la régression consiste, non pas à maximiser les points en dehors des marges comme pour un problème de classification, mais à faire en sorte que le maximum de points se trouvent entre les marges. Le paramètre epsilon permet de faire varier la largeur des marges autour de l’hyperplan. Le paramètre C est un paramètre de régularisation qui indique l’importance attribuée à l’erreur par l’algorithme. Il est également possible de choisir le type de kernel à appliquer pour que les données soient linéairement séparables.
 
 *Figure N°3 : Evolution de l'erreur en cross validation*
+
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/folds.png" alt="folds" style="width:600px;"/>
 
 Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel linéaire, polynomial et rbf. Les 4 modèles sont estimés avec pour paramètres C=100 et epsilon=0.5. Afin de comparer la performance des modèles sur le jeu d’entraînement, on réalise une cross validation en 5 folds. Le score que nous utilisons est le mean square error. Le SVR avec kernel rbf est celui qui permet d’obtenir les erreurs les plus faibles en moyenne sur l’ensemble des folds. On réalise une prévision à partir de ces 4 modèles que l’on compare au jeu test, ce qui permet de constater que le modèle avec kernel rbf est celui qui apporte le mse le plus faible. 
@@ -184,6 +185,7 @@ Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel l
 On cherche à optimiser les hyperparamètres du SVR avec kernel rbf à l’aide d’un GridSearch. Le score mesuré par le GridSearch est le R2 du modèle. On obtient le modèle le plus performant avec les hyperparamètres suivants : C=10 et epsilon=0.1. 
 
 *Figure N°3 : Evolution du score selon les paramètres*
+
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/params.png" alt="params" style="width:600px;"/>
 
 On trace les courbes d’apprentissage associée au modèle. Cela permet de constater que plus on a de données mieux le modèle apprend. EN effet, on constate qu’à mesure que l’on rajoute des données, l’erreur du jeu de validation diminue et se rapproche de celle du jeu d’apprentissage.
