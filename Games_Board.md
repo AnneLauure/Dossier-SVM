@@ -169,9 +169,14 @@ En moyenne, les jeux de société de notre dataset ont une note moyenne de 6,62/
 ### F) Corrélation des variables quantitatives avec la variable *Rating_avg*
 
 *Figure N°2 : Matrice de corrélation*
-<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation_y.jpeg" alt="correlation_y" style="width:1400px;"/>
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation_y.jpeg" alt="correlation_y" style="width:400px;"/>
 
-La variable *BGG_rank*, est la variable qui impact le plus la note moyenne d’un jeu. Plus, le jeu va être positionnés en haut du classement, plus la note moyenne sera élevée. La complexité ainsi que l’âge minimal recommandé pour y jouer à également un impact relativement important sur la note moyenne du jeu. Cela peut s’expliquer par le fait que notre dataset possède une majorité de jeux de guerre. Ce sont des jeux de stratégie donc assez complexes et forcément avec un âge minimum plus important
+La variable *BGG_rank*, est la variable qui impact le plus la note moyenne d’un jeu. Plus, le jeu va être positionnés en haut du classement, plus la note moyenne sera élevée. La complexité ainsi que l’âge minimal recommandé pour y jouer à également un impact relativement important sur la note moyenne du jeu. Cela peut s’expliquer par le fait que notre dataset possède une majorité de jeux de guerre. Ce sont des jeux de stratégie donc assez complexes et forcément avec un âge minimum plus important.
+
+
+*Figure N°3 : cc*
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/Children" alt="Children" style="width:1400px;"/>
+
 
 ## III. Modélisation
 
