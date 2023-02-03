@@ -149,4 +149,18 @@ On note 4 couples de variables fortement corrélées :
 
 - Le nombre de joueurs qui déclarent posséder le jeu (*Owned_users*) et le nombre de joueurs qui ont attribué une note au jeu (Users_rated) très fortement corrélées (0,96). On fait donc le choix de ne conserver que le nombre de joueurs qui possèdent le jeu. On écarte le nombre de votants, car c'est la variable la moins pertinente des deux à conserver puisqu'on peut supposer que le nombre de votants intervient dans le calcul de la variable que nous cherchons à prédire qui est la note moyenne.
 
+### E) ** Statistiques descriptives de *Rating_avg* **
 
+*Tableau N°2 :  Statistiques descriptives de la variable Rating_avg*
+
+|-:|-------:|
+|count|    9302.000000|
+|mean|       6.626050|
+|std  |       0.835887|
+|min|    2.830000|
+|25%    |     6.110000|
+|50%    |     6.650000|
+|75%    |     7.200000|
+|max     |    9.340000|
+
+En moyenne, les jeux de société de notre dataset ont une note moyenne de 6,62/10. Le jeu de guerre *Company of Heroes* à obtenu la note moyenne maximale. À l’inverse, *Quidditch : The Game* (jeu pour enfant) possède la note moyenne minimum. De plus, on constate que la moyenne et la médiane sont très proches. 
