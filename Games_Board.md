@@ -139,11 +139,11 @@ Afin de voir les liens entre nos différentes variables explicatives, nous avons
 *Figure N°1 : Matrice de corrélation*
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation.jpeg" alt="correlation.jpeg" style="width:1400px;"/>
 
-On note 3 couples de variables fortement corrélées : 
+On note 4 couples de variables fortement corrélées : 
 
-- La complexité moyenne (*Complexity_avg*) et le temps de jeu (*Play_Time*) sont corrélés positivement. 
+-  La complexité moyenne (*Complexity_avg*) et le temps de jeu (*Play_Time*) sont corrélés positivement. En effet, un jeu de société plus complexe demandera davantage de réflexion et par conséquent le temps de jeu sera plus important. 
 
-- L'âge minimum (*Min_age*) et la complexité moyenne (*Complexity_avg*) sont aussi corrélés positivement. 
+- 
 
 - Le nombre de joueurs qui déclarent posséder le jeu (*Owned_users*) et le nombre de joueurs qui ont attribué une note au jeu (Users_rated) très fortement corrélées (0,96). On fait donc le choix de ne conserver que le nombre de joueurs qui possèdent le jeu. On écarte le nombre de votants, car c'est la variable la moins pertinente des deux à conserver puisqu'on peut supposer que le nombre de votants intervient dans le calcul de la variable que nous cherchons à prédire qui est la note moyenne.
 
