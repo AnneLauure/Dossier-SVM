@@ -141,12 +141,9 @@ Afin de voir les liens entre nos différentes variables explicatives, nous avons
 
 On note 4 couples de variables fortement corrélées : 
 
--  La complexité moyenne (*Complexity_avg*) et le temps de jeu (*Play_Time*) sont corrélés positivement. En effet, un jeu de société plus complexe demandera davantage de réflexion et par conséquent le temps de jeu sera plus important. 
-
-- 
-
+- La complexité moyenne (*Complexity_avg*) et le temps de jeu (*Play_Time*) sont corrélés positivement. En effet, un jeu de société complexe demandera davantage de réflexion et par conséquent le temps de jeu sera plus important. 
+- La variable *Bgg_rank* et *Users_rated* sont corrélés négativement. Ainsi, plus le nombre de joueurs ayant déclaré posséder le jeu est important, meilleure sera la position de celui-ci dans le classement BoardGamesGeek. 
+- La variable *Bgg_rank* et *Owned_users* sont également corrélés négativement. Les jeux se trouvant en haut du classement BoardGamesGeek sont les jeux de société les plus notés. 
 - Le nombre de joueurs qui déclarent posséder le jeu (*Owned_users*) et le nombre de joueurs qui ont attribué une note au jeu (Users_rated) très fortement corrélées (0,96). On fait donc le choix de ne conserver que le nombre de joueurs qui possèdent le jeu. On écarte le nombre de votants, car c'est la variable la moins pertinente des deux à conserver puisqu'on peut supposer que le nombre de votants intervient dans le calcul de la variable que nous cherchons à prédire qui est la note moyenne.
-
-
 
 
