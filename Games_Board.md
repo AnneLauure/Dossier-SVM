@@ -166,13 +166,13 @@ On note 4 couples de variables fortement corrélées :
 
 En moyenne, les jeux de société de notre dataset ont une note moyenne de 6,62/10. Le jeu de guerre *Company of Heroes* à obtenu la note moyenne maximale. À l’inverse, *Quidditch : The Game* (jeu pour enfant) possède la note moyenne minimum. De plus, on constate que la moyenne et la médiane sont très proches. 
 
-## Modélisation
+## III. Modélisation
 
 L'objecti de notre modélisatoin est de prédire la note moyenne des jeux de société. Pour ce faire on estime deux types de modèle, dans un premier temps on applique un SVR puis on applique un réseau de neurones.  
 
 Préalablement à la modélisation, on procède à un rééchantillonnage. On divise le jeu de données en deux échantillons : 80% des données sont aléatoirement attribuées au jeu d’entraînement et les 20% restant forment le jeu test. Les features quantitatives sont standardisées.
 
-###A/Support Vector Regression
+### A/Support Vector Regression
 
 Le premier modèle que nous appliquons est un *SVR* (Support Vector Regression). Les SVR sont des modèles qui appartiennent à la famille de l’apprentissage supervisé. Les SVR permettent de modéliser des relations linéaires mais aussi non linéaires. Le SVM pour la régression consiste, non pas à maximiser les points en dehors des marges comme pour un problème de classification, mais à faire en sorte que le maximum de points se trouvent entre les marges. Le paramètre epsilon permet de faire varier la largeur des marges autour de l’hyperplan. Le paramètre C est un paramètre de régularisation qui indique l’importance attribuée à l’erreur par l’algorithme. Il est également possible de choisir le type de kernel à appliquer pour que les données soient linéairement séparables.
 
@@ -184,4 +184,4 @@ On trace les courbes d’apprentissage associée au modèle. Cela permet de cons
 
 On fit le modèle à partir des paramètres issus du GridSearch. On mesure le score réalisé par le modèle sur les deux jeux de données à l’aide du R2. Le score obtenu sur le jeu d’entraînement est de 0,93 et celui obtenu sur le jeu test est de 0,83. Le mse obtenu est de 0.11, soit un mse plus faible que celui obtenu avant de tuner les hyperparamètres. L’application du GridSearch a donc permis d’améliorer le modèle.
 
-###B/Réseau de neurone
+### B/Réseau de neurone
