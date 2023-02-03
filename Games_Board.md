@@ -175,7 +175,8 @@ La variable *BGG_rank*, est la variable qui impact le plus la note moyenne d’u
 
 
 *Figure N°3 : cc*
-<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/Children" alt="Children" style="width:1400px;"/>
+
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/Children.jpeg" alt="Children" style="width:400px;"/>
 
 
 ## III. Modélisation
