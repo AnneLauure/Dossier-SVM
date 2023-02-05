@@ -195,19 +195,30 @@ Le premier modèle que nous appliquons est un *SVR* (Support Vector Regression).
 
 Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel linéaire, polynomial et rbf. Les 4 modèles sont estimés avec pour paramètres C=100 et epsilon=0.5. Afin de comparer la performance des modèles sur le jeu d’entraînement, on réalise une cross validation en 5 folds. Le score que nous utilisons est le mean square error. Le SVR avec kernel rbf est celui qui permet d’obtenir les erreurs les plus faibles en moyenne sur l’ensemble des folds. On réalise une prévision à partir de ces 4 modèles que l’on compare au jeu test, ce qui permet de constater que le modèle avec kernel rbf est celui qui apporte le mse le plus faible. 
 
-On cherche à optimiser les hyperparamètres du SVR avec kernel rbf à l’aide d’un GridSearch. Le score mesuré par le GridSearch est le R2 du modèle. On obtient le modèle le plus performant avec les hyperparamètres suivants : C=10 et epsilon=0.1. 
+  On cherche à optimiser les hyperparamètres du SVR avec kernel rbf à l’aide d’un GridSearch. Le score mesuré par le GridSearch est le R2 du modèle. On obtient le modèle le plus performant avec les hyperparamètres suivants : C=10 et epsilon=0.1. 
 
 *Figure N°4 : Evolution du score selon les paramètres*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/params.png" alt="params" style="width:600px;"/>
 
-On trace les courbes d’apprentissage associée au modèle. Cela permet de constater que plus on a de données mieux le modèle apprend. EN effet, on constate qu’à mesure que l’on rajoute des données, l’erreur du jeu de validation diminue et se rapproche de celle du jeu d’apprentissage.
+  On trace les courbes d’apprentissage associée au modèle. Cela permet de constater que plus on a de données mieux le modèle apprend. EN effet, on constate qu’à mesure que l’on rajoute des données, l’erreur du jeu de validation diminue et se rapproche de celle du jeu d’apprentissage.
 
 *Figure N°5 : Courbes d'apprentissage*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/learning%20curve.png" alt="learning%20curve" style="width:600px;"/>
 
 
-On fit le modèle à partir des paramètres issus du GridSearch. On mesure le score réalisé par le modèle sur les deux jeux de données à l’aide du R2. Le score obtenu sur le jeu d’entraînement est de 0,93 et celui obtenu sur le jeu test est de 0,83. Le mse obtenu est de 0.11, soit un mse plus faible que celui obtenu avant de tuner les hyperparamètres. L’application du GridSearch a donc permis d’améliorer le modèle.
+  On fit le modèle à partir des paramètres issus du GridSearch. On mesure le score réalisé par le modèle sur les deux jeux de données à l’aide du R2. Le score obtenu sur le jeu d’entraînement est de 0,93 et celui obtenu sur le jeu test est de 0,83. Le mse obtenu est de 0.11, soit un mse plus faible que celui obtenu avant de tuner les hyperparamètres. L’application du GridSearch a donc permis d’améliorer le modèle.
 
-### B/Réseau de neurone
+### B/Réseau de neurones
+
+  On applique une deuxième méthode afin de prédire la note des jeux de société en estimant un réseau de neurones. On construit un premier réseau de neurones composé d’une couche cachée avec 100 neurones en entrée. On utilise la fonction softmax en sortie pour contraindre les prévisions à être positives car on cherche à prédire des notes qui sont comprises entre 0 et 10. Le jeu d’entraînement est divisé en un jeu d’entraînement et un jeu de validation afin d’évaluer l’évolution de l’erreur au cours des itérations. L’erreur du jeu d’entraînement décroît très vite et se stabilise rapidement. L’erreur sur le jeu de validation fluctue beaucoup sur les premières epochs. Au fur et à mesure des epochs, l’erreur en validation décroît et se rapproche de l’erreur en entraînement. L’algorithme continue donc d’apprendre à mesure qu’il observe de nouvelles données. On peut souligner qu’il y a un peu d’overfitting puisque l’erreur sur le jeu d’entrainement est plus faible que celle du jeu de validation. 
+  
+*Figure N°6 : Evolution de la fonction de perte en fonction du nombre d'epochs*
+
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/ANN1.png" alt="ANN1" style="width:600px;"/>
+
+  
+
+  On évalue ensuite la performance du modèle sur un échantillon test. On obtient un mse de 0,103, soit une erreur plus faible que celle obtenue avec le SVR. On cherche ensuite à améliorer les performances de ce réseau de neurones en en modifiant les paramètres.
+
