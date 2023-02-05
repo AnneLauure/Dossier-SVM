@@ -134,20 +134,20 @@ La variable *Domains* indique les genres des jeux de société. Tout comme pour 
 
 ### D) Corrélation entre les variables quantitatives
 
-Afin de voir les liens entre nos différentes variables explicatives, nous avons représenté la matrice de corrélation :
+Afin de voir les liens entre les différentes variables explicatives, nous avons représenté une matrice des corrélations de spearman :
 
 *Figure N°1 : Matrice de corrélation*
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation.jpeg" alt="correlation.jpeg" style="width:1400px;"/>
 
 On note 4 couples de variables fortement corrélées : 
 
-- La complexité moyenne (*Complexity_avg*) et le temps de jeu (*Play_Time*) sont corrélés positivement. En effet, un jeu de société complexe demandera davantage de réflexion et par conséquent le temps de jeu sera plus important. 
+- La complexité moyenne (*Complexity_avg*) et le temps de jeu (*Play_Time*) sont corrélés positivement. On peut en effet supposer qu'un jeu de société complexe demandera davantage de réflexion et par conséquent le temps de jeu sera plus important. 
 
-- La variable *Bgg_rank* et *Users_rated* sont corrélés négativement. Ainsi, plus le nombre de joueurs ayant déclaré posséder le jeu est important, meilleure sera la position de celui-ci dans le classement BoardGamesGeek. 
+- La variable *Bgg_rank* et *Users_rated* sont corrélés négativement. Ainsi, plus le nombre de joueurs ayant déclaré posséder le jeu est important plus la position de celui-ci dans le classement BoardGamesGeek semble élevé. 
  
-- La variable *Bgg_rank* et *Owned_users* sont également corrélés négativement. Les jeux se trouvant en haut du classement BoardGamesGeek sont les jeux de société les plus notés. 
+- La variable *Bgg_rank* et *Owned_users* sont également corrélés négativement. Les jeux se trouvant en haut du classement BoardGamesGeek sont les jeux de société les plus possédés par les utilisateurs du site.  
 
-- Le nombre de joueurs qui déclarent posséder le jeu (*Owned_users*) et le nombre de joueurs qui ont attribué une note au jeu (Users_rated) très fortement corrélées (0,96). On fait donc le choix de ne conserver que le nombre de joueurs qui possèdent le jeu. On écarte le nombre de votants, car c'est la variable la moins pertinente des deux à conserver puisqu'on peut supposer que le nombre de votants intervient dans le calcul de la variable que nous cherchons à prédire qui est la note moyenne.
+- Le nombre de joueurs qui déclarent posséder le jeu (*Owned_users*) et le nombre de joueurs qui ont attribué une note au jeu (Users_rated) sont très fortement corrélés (0,96). On fait donc le choix de ne conserver que le nombre de joueurs qui possèdent le jeu. On écarte le nombre de votants, car c'est la variable la moins pertinente des deux à conserver puisqu'on peut supposer que le nombre de votants intervient dans le calcul de la variable que nous cherchons à prédire qui est la note moyenne.
 
 ### E) Statistiques descriptives de *Rating_avg* 
 
@@ -171,7 +171,7 @@ En moyenne, les jeux de société de notre dataset ont une note moyenne de 6,62/
 *Figure N°2 : Matrice de corrélation*
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation_y.jpeg" alt="correlation_y" style="width:400px;"/>
 
-La variable *BGG_rank*, est la variable qui impact le plus la note moyenne d’un jeu. Plus, le jeu va être positionnés en haut du classement, plus la note moyenne sera élevée. La complexité ainsi que l’âge minimal recommandé pour y jouer à également un impact relativement important sur la note moyenne du jeu. Cela peut s’expliquer par le fait que notre dataset possède une majorité de jeux de guerre. Ce sont des jeux de stratégie donc assez complexes et forcément avec un âge minimum plus important.
+La variable *BGG_rank*, est la variable la plus corrélée avec la note moyenne d’un jeu. Plus, le jeu est positionné en haut du classement, plus la note moyenne est élevée. La complexité ainsi que l’âge minimal recommandé pour y jouer ont un impact positif relativement important sur la note moyenne du jeu. En revanche, les variables concernant le nombre de joueurs maximum ou minimum sont peu corrélées avec la note moyenne d'un jeu de société.
 
 
 *Figure N°3 : cc*
