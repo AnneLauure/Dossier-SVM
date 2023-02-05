@@ -106,11 +106,11 @@ Notre dataset contient 2 variables qualitatives : *Mechanics* et *Domains*.
 
 - **Mechanics**
 
-La variable *Mechanics* indique les différentes mécaniques de jeu qui peuvent être utilisées dans le jeu. Certains jeux ont plus d'une mécanique qui intervient. Il y a 182 mécaniques de jeu différentes. Un jeu peut avoir plusieurs mécaniques (au maximum 19)
+La variable *Mechanics* indique les différentes mécaniques de jeu qui peuvent être utilisées lors d'une partie. Par exemple, la mécanique indique s'il s'agit d'un jeu de cartes ou d'un jeu de dé. Certains jeux ont plus d'une mécanique qui intervient. Il y a 182 mécaniques de jeu différentes. Le nombre maximum de mécaniques observées pour un même jeu est de 19.
 
-Dans un premier temps on créer une variables correspondant au nombre de mécaniques par jeux. On peut supposer que c'est une variable qui pourrait avoir un impact sur la popularité du jeu, soit parce qu'un jeu avec trop de mécanique serait difficile d'accès pour un large public soit parce qu'il permet d'avoir différente dynamique au cours d'une partie qui rendent attrayant ce jeu.
+Dans un premier temps on crée une variables correspondant au nombre de mécaniques par jeu. On peut supposer que c'est une variable qui pourrait avoir un impact sur la popularité du jeu, soit parce qu'un jeu avec trop de mécaniques serait difficile d'accès pour un large public soit parce qu'il permet d'avoir différentes dynamiques au cours d'une partie qui rendent attrayant ce jeu.
 
-Dans un second temps on créer des variables binaires pour les mécaniques les plus communes pour savoir si le jeu appartient ou non à une mécanique. Il ne paraît pas pertinent de construire une variable par mécanique, cela représenterait trop de variables et certaines mécaniques ne sont pas suffisamment représentées. Nous gardons ainsi les mécaniques de jeux dont la fréquence d'apparition est supérieure à 930,2 (10 % du nombre de jeux total dans notre dataset). Les mécaniques de jeux les plus communes sont les suivantes : *Dice Rolling*, *Hexagon Grid*, *Hand Management*, *Simulation*, *Variable Player Powers*, *Set Collection* ainsi que *Grid Movement*. Nous créons ainsi une variable binaire (au total 7) pour chacune de ses mécaniques. 
+Dans un second temps on crée des variables binaires pour les mécaniques les plus communes pour savoir si le jeu appartient ou non à une mécanique. Il ne paraît pas pertinent de construire une variable par mécanique, cela représenterait trop de variables et certaines mécaniques ne sont pas suffisamment représentées. Nous gardons ainsi les mécaniques de jeux dont la fréquence d'apparition est supérieure à 10 % du nombre de jeux total dans notre dataset. Les mécaniques de jeux les plus communes sont les suivantes : *Dice Rolling*, *Hexagon Grid*, *Hand Management*, *Simulation*, *Variable Player Powers*, *Set Collection* ainsi que *Grid Movement*. Nous créons ainsi une variable binaire pour chacune de ses mécaniques, soit un total de 7 nouvelles variables. 
 
 Nous avons également cherché si l’on pouvait procéder à certains regroupements de mécaniques. Par exemple, les jeux d'enchères sont séparés dans différentes catégories donc nous regardons combien de jeux sont dans ces catégories afin de voir s'il peut être pertinent de les regrouper pour en faire une catégorie unique.
 
@@ -120,13 +120,13 @@ Nous avons également cherché si l’on pouvait procéder à certains regroupem
 
 - Il y a 137 jeux de Turn order. Cela représente 1.473 % des jeux de la base de données. Il y a trop peu de jeux de turn order pour que cela soit pertinent de créer une variable pour cette mécanique.
 
-- Les jeux possédant une mécanique contenant le mot “Action” représentent 14.61 % des jeux de la base de données. Ainsi, nous créons une variable binaire intitulé *Action*
+- Les jeux possédant une mécanique contenant le mot “Action” représentent 14.61 % des jeux de la base de données. Ainsi, nous créons une variable binaire intitulée *Action*
 
 - Il y a 508 jeux d'enchères, soit 5.46 % des jeux de la base de données. Il y a trop peu de jeux d'enchères pour que cela soit pertinent de créer une variable pour cette mécanique
 
-- Il y a 1193 jeux d'action. Cela représente 12.82 % des jeux de la base de données. On créer une variable binaire *Map*. Cette variable prend la valeur de 1 si le jeu à une mécanique contenant le mot “Map”.
+- Il y a 1193 jeux de cartes. Cela représente 12.82 % des jeux de la base de données. On crée une variable binaire *Map*. Cette variable prend la valeur de 1 si le jeu à une mécanique contenant le mot “Card”.
 
-Finalement pour la variable *Mechanics* Nous avons créé un 9 variables binaires ainsi qu'une variable quantitative représentant le nombre de mécaniques par jeu. 
+Finalement pour la variable *Mechanics* Nous avons créé 9 variables binaires ainsi qu'une variable quantitative représentant le nombre de mécaniques par jeu. 
 
 - **Domains**
 
