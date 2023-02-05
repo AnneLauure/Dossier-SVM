@@ -173,7 +173,7 @@ En moyenne, les jeux de société de notre dataset ont une note moyenne de 6,62/
 
 La variable *BGG_rank*, est la variable la plus corrélée avec la note moyenne d’un jeu. Plus, le jeu est positionné en haut du classement, plus la note moyenne est élevée. La complexité ainsi que l’âge minimal recommandé pour y jouer ont un impact positif relativement important sur la note moyenne du jeu. En revanche, les variables concernant le nombre de joueurs maximum ou minimum sont peu corrélées avec la note moyenne d'un jeu de société.
 
-
+On s'intéresse également à la distribution des notes selon les modalités des diverses variables qualitatives. On constate qu'il semble y avoir peut de variations liées aux mécaniques et aux domaines. On peut toutefois noter qu'il semble y avoir une différence de moyenne entre les jeux pour enfant et ceux qui ne le sont pas. Les jeux pour enfant (appartenant au domaine "Children") obtiennent une note plus faible en moyenne sur notre échantillon.
 *Figure N°3 : cc*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/Children.jpeg" alt="Children" style="width:400px;"/>
@@ -181,7 +181,7 @@ La variable *BGG_rank*, est la variable la plus corrélée avec la note moyenne 
 
 ## III. Modélisation
 
-L'objecti de notre modélisatoin est de prédire la note moyenne des jeux de société. Pour ce faire on estime deux types de modèle, dans un premier temps on applique un SVR puis on applique un réseau de neurones.  
+L'objectif de notre modélisatoin est de prédire la note moyenne des jeux de société. Pour ce faire on estime deux types de modèle, dans un premier temps on applique un SVR puis on applique un réseau de neurones.  
 
 Préalablement à la modélisation, on procède à un rééchantillonnage. On divise le jeu de données en deux échantillons : 80% des données sont aléatoirement attribuées au jeu d’entraînement et les 20% restant forment le jeu test. Les features quantitatives sont standardisées.
 
