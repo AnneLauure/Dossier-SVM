@@ -174,7 +174,8 @@ En moyenne, les jeux de société de notre dataset ont une note moyenne de 6,62/
 La variable *BGG_rank*, est la variable la plus corrélée avec la note moyenne d’un jeu. Plus, le jeu est positionné en haut du classement, plus la note moyenne est élevée. La complexité ainsi que l’âge minimal recommandé pour y jouer ont un impact positif relativement important sur la note moyenne du jeu. En revanche, les variables concernant le nombre de joueurs maximum ou minimum sont peu corrélées avec la note moyenne d'un jeu de société.
 
 On s'intéresse également à la distribution des notes selon les modalités des diverses variables qualitatives. On constate qu'il semble y avoir peut de variations liées aux mécaniques et aux domaines. On peut toutefois noter qu'il semble y avoir une différence de moyenne entre les jeux pour enfant et ceux qui ne le sont pas. Les jeux pour enfant (appartenant au domaine "Children") obtiennent une note plus faible en moyenne sur notre échantillon.
-*Figure N°3 : cc*
+
+*Figure N°3 : Distribution de la note moyenne en fonction de la variable Children*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/Children.jpeg" alt="Children" style="width:400px;"/>
 
@@ -221,4 +222,8 @@ Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel l
   
   On évalue ensuite la performance du modèle sur un échantillon test. On obtient un mse de 0,103, soit une erreur plus faible que celle obtenue avec le SVR. On cherche ensuite à améliorer les performances de ce réseau de neurones en en modifiant les paramètres à l’aide d’un GridSearch. Le modèle ayant 2 couches cachées avec 200 neurones chacunes ainsi qu’un learning rate de 0.001 est  le plus performant en termes de MSE. Sur l’échantillons test on obtient une erreur MSE légèrement plus faible (0,0936)
 
+*Figure N°7 : Evolution de la fonction de perte en fonction du nombre d'epochs pour le modèle obtenue à l'aide du GridSearch*
 
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/pp.jpeg.jpeg" alt="ANN1" style="width:600px;"/>
+
+Tout comme pour le réseau de neurones précédent, l’erreur du jeu d'entraînement est importante au début puis se stabilise par la suite. L’erreur sur le jeu de validation suit la même allure. La encore, il y a un peu d’overfitting puisque l’erreur sur le jeu d'entraînement est plus faible que celle du jeu de validation.
