@@ -216,7 +216,7 @@ Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel l
   
 *Figure N°6 : Evolution de la fonction de perte en fonction du nombre d'epochs*
 
-<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/ANN1.png" alt="ANN1" style="width:600px;"/>
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/ANN1.jpeg" alt="ANN1" style="width:600px;"/>
 
   
 
