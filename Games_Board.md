@@ -219,6 +219,6 @@ Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel l
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/ANN1.jpeg" alt="ANN1" style="width:600px;"/>
 
   
+  On évalue ensuite la performance du modèle sur un échantillon test. On obtient un mse de 0,103, soit une erreur plus faible que celle obtenue avec le SVR. On cherche ensuite à améliorer les performances de ce réseau de neurones en en modifiant les paramètres à l’aide d’un GridSearch. Le modèle ayant 2 couches cachées avec 200 neurones chacunes ainsi qu’un learning rate de 0.001 est  le plus performant en termes de MSE. Sur l’échantillons test on obtient une erreur MSE légèrement plus faible (0,0936)
 
-  On évalue ensuite la performance du modèle sur un échantillon test. On obtient un mse de 0,103, soit une erreur plus faible que celle obtenue avec le SVR. On cherche ensuite à améliorer les performances de ce réseau de neurones en en modifiant les paramètres.
 
