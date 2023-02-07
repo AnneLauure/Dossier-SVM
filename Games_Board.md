@@ -262,9 +262,9 @@ On construit un premier réseau de neurones avec une couche cachée comprenant 1
 
 On utilise un GridSearch pour tuner les paramètres du réseau de neurones. On obtient ainsi un réseau de neurones avec 2 couches cachées, chacune ayant 50 neurones en entrée. L’accuracy (0,8899) de ce modèle est plus élevée que celle du premier réseau de neurones. L’optimisation par GridSearch a donc bien permis d’améliorer les capacités prédictives du modèle.
 
-*Figure N°12 : Tableau ed comparaison des indicateurs de performance*
+*Figure N°12 : Tableau de comparaison des indicateurs de performance*
 
-<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/tableau.jpg" alt="tableau" style="width:600px;"/>
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/tableau.JPG" alt="tableau" style="width:600px;"/>
 
 On compare les modèles que l’on a estimé à partir de différents indicateurs. A l’exception de la spécificité, tous les indicateurs indiquent que le réseau de neurones dont on a tuné les paramètres apporte les mêmes résultats. Cela implique que le réseau de neurones avec les paramètres par défaut parvient mieux à prédire les cas négatifs que les autres modèles. En revanche, le réseau de neurones optimisé parvient mieux à identifier les vrais cas positifs puisqu’il a un recall plus élevé. Un AUC de 1 indique que le modèle est capable de bien prédire les classes. Cela correspond à l’aire sous la courbe ROC, c’est-à-dire à un arbitrage entre un taux de vrais positifs élevés et un taux de faux positifs qui ne soit pas augmenté par la même occasion.
 
