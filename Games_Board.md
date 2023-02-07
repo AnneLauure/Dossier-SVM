@@ -228,6 +228,8 @@ Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel l
 
 Tout comme pour le réseau de neurones précédent, l’erreur du jeu d'entraînement est importante au début puis se stabilise par la suite. L’erreur sur le jeu de validation suit la même allure. La encore, il y a un peu d’overfitting puisque l’erreur sur le jeu d'entraînement est plus faible que celle du jeu de validation.
 
+Le réseau de neurones après optimisation des hyperparamètres permet de prédire au mieux la note moyenne des jeux de société comparativement aux SVR estimés.
+
 ## IV. Classification
 
 Notre objectif dans cette seconde partie est d’appliquer des méthodes de classification pour identifier les jeux appartenant ou non à la catégorie des jeux de stratégie. Nous nous intéressons donc aux caractéristiques qui peuvent faire d’un jeu un jeu de stratégie.
