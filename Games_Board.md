@@ -180,7 +180,7 @@ On s'intéresse également à la distribution des notes selon les modalités des
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/Children.jpeg" alt="Children" style="width:400px;"/>
 
 
-## III. Modélisation
+## III. Régression
 
 L'objectif de notre modélisatoin est de prédire la note moyenne des jeux de société. Pour ce faire on estime deux types de modèle, dans un premier temps on applique un SVR puis on applique un réseau de neurones.  
 
@@ -227,3 +227,9 @@ Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel l
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/pp.jpeg.jpeg" alt="ANN1" style="width:600px;"/>
 
 Tout comme pour le réseau de neurones précédent, l’erreur du jeu d'entraînement est importante au début puis se stabilise par la suite. L’erreur sur le jeu de validation suit la même allure. La encore, il y a un peu d’overfitting puisque l’erreur sur le jeu d'entraînement est plus faible que celle du jeu de validation.
+
+## IV. Classification
+
+Notre objectif dans cette seconde partie est d’appliquer des méthodes de classification pour identifier les jeux appartenant ou non à la catégorie des jeux de stratégie. Nous nous intéressons donc aux caractéristiques qui peuvent faire d’un jeu un jeu de stratégie.
+Les jeux de stratégie ne représentent que 23% de la base de données, nous devons donc appliquer une méthode pour rééquilibrer les classes dans l’échantillon. Nous appliquons une méthode d’undersampling. L’échantillon original de 9302 jeux est ainsi réduit à 4358 jeux. On retire la base de données les différentes variables crées précédemment concernant le domaine auquel appartient le jeu, à l’exception de la variable « Strategy » qui est la variable que l’on cherche à prédire.
+Dans un premier temps, nous appliquons des méthodes de SVM. L’objectif des SVM est de séparer les classes par un hyperplan en maximisant l’écart entre les marges qui entourent cette frontière de décision. Nous estimons d’abord des SVM linéaires que nous comparons également à une régression logistique. Les SVM linéaires sont estimés avec les paramètres par défaut. On procède à une cross validation afin d’identifier le modèle le plus performant selon l’accuracy. 
