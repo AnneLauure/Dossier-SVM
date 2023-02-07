@@ -233,3 +233,23 @@ Tout comme pour le réseau de neurones précédent, l’erreur du jeu d'entraîn
 Notre objectif dans cette seconde partie est d’appliquer des méthodes de classification pour identifier les jeux appartenant ou non à la catégorie des jeux de stratégie. Nous nous intéressons donc aux caractéristiques qui peuvent faire d’un jeu un jeu de stratégie.
 Les jeux de stratégie ne représentent que 23% de la base de données, nous devons donc appliquer une méthode pour rééquilibrer les classes dans l’échantillon. Nous appliquons une méthode d’undersampling. L’échantillon original de 9302 jeux est ainsi réduit à 4358 jeux. On retire la base de données les différentes variables crées précédemment concernant le domaine auquel appartient le jeu, à l’exception de la variable « Strategy » qui est la variable que l’on cherche à prédire.
 Dans un premier temps, nous appliquons des méthodes de SVM. L’objectif des SVM est de séparer les classes par un hyperplan en maximisant l’écart entre les marges qui entourent cette frontière de décision. Nous estimons d’abord des SVM linéaires que nous comparons également à une régression logistique. Les SVM linéaires sont estimés avec les paramètres par défaut. On procède à une cross validation afin d’identifier le modèle le plus performant selon l’accuracy. 
+
+*Figure N°8 : Evolution de l'accuracy selon les folds en cross validation*
+
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/accuracy_l.jpeg" alt="accuracy_l" style="width:600px;"/>
+
+En moyenne, le SVC avec un kernel linéaire donne la meilleure accuracy (0,8477) et il est par ailleurs relativement stable selon les folds avec un écart-type de 0,006. On applique donc un GridSearch sur ce modèle pour tuner les hyperparamètres. On obtient un SVC avec un kernel linéaire dont le paramètre de régularisation C est de 1000. La valeur de C élevée indique que le modèle est plus performant en autorisant la présence de moins d’outliers. L’accuracy est de 0,8482. Le GridSearch a donc bien permis d’augmenter la performance du modèle. On évalue la performance de ce modèle out of sample. Le training score est de 0,8482 tandis que le score sur le jeu test est de 0,8303. On peut noter que les deux scores sont proches. Le modèle apprend donc des données sans pour autant être en sur-ajustement.
+L’application d’un SVC linéaire permet d’observer l’influence des variables sur le modèle. On peut ainsi noter que le niveau de complexité moyen d’un jeu plus élevé est davantage associé à un jeu de stratégie. De même les jeux faisant intervenir une mécanique de lancé de dés ont un impact positif sur le modèle. En revanche, les jeux avec des mécaniques de management et de Variable Player Powers ont un effet négatif sur le modèle.
+
+*Figure N°9 : Importance des variables sur le SVC linéaire*
+
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/importance.png" alt="importance" style="width:600px;"/>
+
+On applique ensuite des méthodes de SVM non linéaire en utilisant des kernel tricks. On estime des SVM avec trois kernel différents (polynomial, rbf et linéaire) et les paramètres par défaut. En cross validation, c’est le modèle avec un kernel rbf qui permet d’obtenir l’accuracy la plus élevée. On procède à un GridSearch pour tuner les hyperparamètres. On obtient comme meilleur modèle un SVC avec un kernel rbf, un paramètre de régularisation C=100 et un gamma=0,01. L’accuracy sur le jeu d’entraînement est de 0,911 et elle est de 0,8773 sur le jeu test. On peut noter un léger sur-ajustement du modèle, cela est notamment dû au fait que le SVC non linéaire présente davantage de paramètres à estimer par rapport au SVC linéaire. Le fait de recourir à un SVC non linéaire permet d'améliorer l'accuracy.
+
+*Figure N°10 : Matrice de confusion du SVC avec kernel rbf*
+
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/cm_rbf.png" alt="cm_rbf" style="width:600px;"/>
+
+
+
