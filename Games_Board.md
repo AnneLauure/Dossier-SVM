@@ -236,7 +236,7 @@ Dans un premier temps, nous appliquons des méthodes de SVM. L’objectif des SV
 
 *Figure N°8 : Evolution de l'accuracy selon les folds en cross validation*
 
-<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/accuracy_l.jpeg" alt="accuracy_l" style="width:600px;"/>
+<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/accuracy_l.png" alt="accuracy_l" style="width:600px;"/>
 
 En moyenne, le SVC avec un kernel linéaire donne la meilleure accuracy (0,8477) et il est par ailleurs relativement stable selon les folds avec un écart-type de 0,006. On applique donc un GridSearch sur ce modèle pour tuner les hyperparamètres. On obtient un SVC avec un kernel linéaire dont le paramètre de régularisation C est de 1000. La valeur de C élevée indique que le modèle est plus performant en autorisant la présence de moins d’outliers. L’accuracy est de 0,8482. Le GridSearch a donc bien permis d’augmenter la performance du modèle. On évalue la performance de ce modèle out of sample. Le training score est de 0,8482 tandis que le score sur le jeu test est de 0,8303. On peut noter que les deux scores sont proches. Le modèle apprend donc des données sans pour autant être en sur-ajustement.
 L’application d’un SVC linéaire permet d’observer l’influence des variables sur le modèle. On peut ainsi noter que le niveau de complexité moyen d’un jeu plus élevé est davantage associé à un jeu de stratégie. De même les jeux faisant intervenir une mécanique de lancé de dés ont un impact positif sur le modèle. En revanche, les jeux avec des mécaniques de management et de Variable Player Powers ont un effet négatif sur le modèle.
