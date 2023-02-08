@@ -119,11 +119,7 @@ Nous avons également cherché si l’on pouvait procéder à certains regroupem
 
 - Au total, 3 437 jeux utilisent un dé, soit 36.95 % des jeux de la base de données. Comme nous avons déjà créé une variable “Dice Rolling” auparavant nous ajoutons à cette dernière les autres mécaniques contenant le mot “Dice”. On renomme cette variable *Dice*.
 
-- Il y a 137 jeux de Turn order. Cela représente 1.473 % des jeux de la base de données. Il y a trop peu de jeux de turn order pour que cela soit pertinent de créer une variable pour cette mécanique.
-
 - Les jeux possédant une mécanique contenant le mot “Action” représentent 14.61 % des jeux de la base de données. Ainsi, nous créons une variable binaire intitulée *Action*
-
-- Il y a 508 jeux d'enchères, soit 5.46 % des jeux de la base de données. Il y a trop peu de jeux d'enchères pour que cela soit pertinent de créer une variable pour cette mécanique
 
 - Il y a 1193 jeux de cartes. Cela représente 12.82 % des jeux de la base de données. On crée une variable binaire *Map*. Cette variable prend la valeur de 1 si le jeu à une mécanique contenant le mot “Card”.
 
@@ -182,48 +178,45 @@ On s'intéresse également à la distribution des notes selon les modalités des
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/Children.jpeg" alt="Children" style="width:400px;"/>
 
-
 ## III. Régression
 
-L'objectif de notre modélisatoin est de prédire la note moyenne des jeux de société. Pour ce faire on estime deux types de modèle, dans un premier temps on applique un SVR puis on applique un réseau de neurones.  
+L'objectif de notre modélisation est de prédire la note moyenne des jeux de société. Pour ce faire, on estime deux types de modèle, dans un premier temps, on applique différents SVR puis on applique un réseau de neurones.  
 
-Préalablement à la modélisation, on procède à un rééchantillonnage. On divise le jeu de données en deux échantillons : 80% des données sont aléatoirement attribuées au jeu d’entraînement et les 20% restant forment le jeu test. Les features quantitatives sont standardisées.
+Préalablement, à la modélisation, on procède à un rééchantillonnage. On divise le jeu de données en deux échantillons : 80 % des données sont aléatoirement attribuées au jeu d’entraînement et les 20 % restantes forment le jeu test. Les features quantitatives sont standardisées.
 
 ### A/Support Vector Regression
 
-Le premier modèle que nous appliquons est un *SVR* (Support Vector Regression). Les SVR sont des modèles qui appartiennent à la famille de l’apprentissage supervisé. Les SVR permettent de modéliser des relations linéaires mais aussi non linéaires. Le SVM pour la régression consiste, non pas à maximiser les points en dehors des marges comme pour un problème de classification, mais à faire en sorte que le maximum de points se trouvent entre les marges. Le paramètre epsilon permet de faire varier la largeur des marges autour de l’hyperplan. Le paramètre C est un paramètre de régularisation qui indique l’importance attribuée à l’erreur par l’algorithme. Il est également possible de choisir le type de kernel à appliquer pour que les données soient linéairement séparables.
+Le premier modèle que nous appliquons est un *SVR* (Support Vector Regression). Les SVR sont des modèles qui appartiennent à la famille de l’apprentissage supervisé. Les SVR permettent de modéliser des relations linéaires, mais aussi non-linéaires. Le SVM pour la régression consiste, non pas à maximiser les points en dehors des marges comme pour un problème de classification, mais à faire en sorte que le maximum de points se trouve entre les marges. Le paramètre epsilon permet de faire varier la largeur des marges autour de l’hyperplan. Le paramètre C est un paramètre de régularisation qui indique l’importance attribuée à l’erreur par l’algorithme. Il est également possible de choisir le type de kernel à appliquer pour que les données soient linéairement séparables.
 
 *Figure N°5 : Evolution de l'erreur en cross validation*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/folds.png" alt="folds" style="width:600px;"/>
 
-Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel linéaire, polynomial et rbf. Les 4 modèles sont estimés avec pour paramètres C=100 et epsilon=0.5. Afin de comparer la performance des modèles sur le jeu d’entraînement, on réalise une cross validation en 5 folds. Le score que nous utilisons est le mean square error. Le SVR avec kernel rbf est celui qui permet d’obtenir les erreurs les plus faibles en moyenne sur l’ensemble des folds. On réalise une prévision à partir de ces 4 modèles que l’on compare au jeu test, ce qui permet de constater que le modèle avec kernel rbf est celui qui apporte le mse le plus faible. 
+Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel linéaire, polynomial et rbf. Les 4 modèles sont estimés avec pour paramètres C=100 et epsilon=0.5. Afin de comparer la performance des modèles sur le jeu d’entraînement, on réalise une cross validation en 5 folds. Le score que nous utilisons est le mean square error (MSE). Le SVR avec kernel rbf est celui qui permet d’obtenir les erreurs les plus faibles en moyenne sur l’ensemble des folds. On réalise une prévision à partir de ces 4 modèles que l’on compare au jeu test, ce qui permet de constater que le modèle avec kernel rbf est celui qui apporte le mse le plus faible. 
 
-  On cherche à optimiser les hyperparamètres du SVR avec kernel rbf à l’aide d’un GridSearch. Le score mesuré par le GridSearch est le R2 du modèle. On obtient le modèle le plus performant avec les hyperparamètres suivants : C=10 et epsilon=0.1. 
+On cherche à optimiser les hyperparamètres du SVR avec kernel rbf à l’aide d’un GridSearch. Le score mesuré par le GridSearch est le R2 du modèle. On obtient le modèle le plus performant avec les hyperparamètres suivants : C=10 et epsilon=0.1. 
 
 *Figure N°6 : Evolution du score selon les paramètres*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/params.png" alt="params" style="width:600px;"/>
 
-  On trace les courbes d’apprentissage associée au modèle. Cela permet de constater que plus on a de données mieux le modèle apprend. EN effet, on constate qu’à mesure que l’on rajoute des données, l’erreur du jeu de validation diminue et se rapproche de celle du jeu d’apprentissage.
+On trace les courbes d’apprentissage associées au modèle. Cela permet de constater que plus on a de données mieux le modèle apprend. EN effet, on constate qu’à mesure que l’on rajoute des données, l’erreur du jeu de validation diminue et se rapproche de celle du jeu d’apprentissage.
 
 *Figure N°7 : Courbes d'apprentissage*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/learning%20curve.png" alt="learning%20curve" style="width:600px;"/>
 
-
-  On fit le modèle à partir des paramètres issus du GridSearch. On mesure le score réalisé par le modèle sur les deux jeux de données à l’aide du R2. Le score obtenu sur le jeu d’entraînement est de 0,93 et celui obtenu sur le jeu test est de 0,83. Le mse obtenu est de 0.11, soit un mse plus faible que celui obtenu avant de tuner les hyperparamètres. L’application du GridSearch a donc permis d’améliorer le modèle.
+On fit le modèle à partir des paramètres issus du GridSearch. On mesure le score réalisé par le modèle sur les deux jeux de données à l’aide du R2. Le score obtenu sur le jeu d’entraînement est de 0,93 et celui obtenu sur le jeu test est de 0,83. Le mse obtenu est de 0.11, soit un mse plus faible que celui obtenu avant de tuner les hyperparamètres. L’application du GridSearch a donc permis d’améliorer le modèle.
 
 ### B/Réseau de neurones
 
-  On applique une deuxième méthode afin de prédire la note des jeux de société en estimant un réseau de neurones. On construit un premier réseau de neurones composé d’une couche cachée avec 100 neurones en entrée. On utilise la fonction softmax en sortie pour contraindre les prévisions à être positives car on cherche à prédire des notes qui sont comprises entre 0 et 10. Le jeu d’entraînement est divisé en un jeu d’entraînement et un jeu de validation afin d’évaluer l’évolution de l’erreur au cours des itérations. L’erreur du jeu d’entraînement décroît très vite et se stabilise rapidement. L’erreur sur le jeu de validation fluctue beaucoup sur les premières epochs. Au fur et à mesure des epochs, l’erreur en validation décroît et se rapproche de l’erreur en entraînement. L’algorithme continue donc d’apprendre à mesure qu’il observe de nouvelles données. On peut souligner qu’il y a un peu d’overfitting puisque l’erreur sur le jeu d’entrainement est plus faible que celle du jeu de validation. 
+On applique une deuxième méthode afin de prédire la note des jeux de société en estimant un réseau de neurones. On construit un premier réseau de neurones composé d’une couche cachée avec 100 neurones en entrée. On utilise la fonction softmax en sortie pour contraindre les prévisions à être positives, car on cherche à prédire des notes qui sont comprises entre 0 et 10. Le jeu d’entraînement est divisé en un jeu d’entraînement et un jeu de validation afin d’évaluer l’évolution de l’erreur au cours des itérations. L’erreur du jeu d’entraînement décroît très vite et se stabilise rapidement. L’erreur sur le jeu de validation fluctue beaucoup sur les premières epochs. Au fur et à mesure des epochs, l’erreur en validation décroît et se rapproche de l’erreur en entraînement. L’algorithme continue donc d’apprendre à mesure qu’il observe de nouvelles données. On peut souligner qu’il y a un peu d’overfitting puisque l’erreur sur le jeu d’entraînement est plus faible que celle du jeu de validation. 
   
 *Figure N°8 : Evolution de la fonction de perte en fonction du nombre d'epochs*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/ANN1.jpeg" alt="ANN1" style="width:600px;"/>
 
-  
-  On évalue ensuite la performance du modèle sur un échantillon test. On obtient un mse de 0,103, soit une erreur plus faible que celle obtenue avec le SVR. On cherche ensuite à améliorer les performances de ce réseau de neurones en en modifiant les paramètres à l’aide d’un GridSearch. Le modèle ayant 2 couches cachées avec 200 neurones chacunes ainsi qu’un learning rate de 0.001 est  le plus performant en termes de MSE. Sur l’échantillons test on obtient une erreur MSE légèrement plus faible (0,0936)
+On évalue ensuite la performance du modèle sur un échantillon test. On obtient un mse de 0,103, soit une erreur plus faible que celle obtenue avec le SVR. On cherche ensuite à améliorer les performances de ce réseau de neurones en modifiant les paramètres à l’aide d’un GridSearch. Le modèle ayant 2 couches cachées avec 200 neurones chacune ainsi qu’un learning rate de 0.001 est le plus performant en termes de MSE. Sur l’échantillon test, on obtient une erreur MSE légèrement plus faible (0,0936)
 
 *Figure N°9 : Evolution de la fonction de perte en fonction du nombre d'epochs pour le modèle obtenue à l'aide du GridSearch*
 
@@ -235,15 +228,18 @@ Le réseau de neurones après optimisation des hyperparamètres permet de prédi
 
 ## IV. Classification
 
-Notre objectif dans cette seconde partie est d’appliquer des méthodes de classification pour identifier les jeux appartenant ou non à la catégorie des jeux de stratégie. Nous nous intéressons donc aux caractéristiques qui peuvent faire d’un jeu de stratégie.
-Les jeux de stratégie ne représentent que 23% de la base de données, nous devons donc appliquer une méthode pour rééquilibrer les classes dans l’échantillon. Nous appliquons une méthode d’undersampling. L’échantillon original de 9302 jeux est ainsi réduit à 4358 jeux. On retire la base de données les différentes variables crées précédemment concernant le domaine auquel appartient le jeu, à l’exception de la variable « Strategy » qui est la variable que l’on cherche à prédire.
+Notre objectif dans cette seconde partie est d’appliquer des méthodes de classification pour identifier les jeux appartenant ou non à la catégorie des jeux de stratégie. Nous nous intéressons donc aux caractéristiques qui peuvent faire d’un jeu un jeu de stratégie.
+
+Les jeux de stratégie ne représentent que 23 % de la base de données, nous devons donc appliquer une méthode pour rééquilibrer les classes dans l’échantillon. Nous appliquons une méthode d’undersampling. L’échantillon original de 9 302 jeux est ainsi réduit à 4 358 jeux. On retire la base de données, les différentes variables crées précédemment concernant le domaine auquel appartient le jeu à l’exception de la variable « Strategy » qui est la variable que l’on cherche à prédire. En effet, ce ne serait pas pertinent d'inclure ces variables, car l'appartenance à un domaine est quasi exclusive. 
+
 Dans un premier temps, nous appliquons des méthodes de SVM. L’objectif des SVM est de séparer les classes par un hyperplan en maximisant l’écart entre les marges qui entourent cette frontière de décision. Nous estimons d’abord des SVM linéaires que nous comparons également à une régression logistique. Les SVM linéaires sont estimés avec les paramètres par défaut. On procède à une cross validation afin d’identifier le modèle le plus performant selon l’accuracy. 
 
 *Figure N°10 : Evolution de l'accuracy selon les folds en cross validation*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/accuracy_l.png" alt="accuracy_l" style="width:600px;"/>
 
-En moyenne, le SVC avec un kernel linéaire donne la meilleure accuracy (0,8477) et il est par ailleurs relativement stable selon les folds avec un écart-type de 0,006. On applique donc un GridSearch sur ce modèle pour tuner les hyperparamètres. On obtient un SVC avec un kernel linéaire dont le paramètre de régularisation C est de 1000. La valeur de C élevée indique que le modèle est plus performant en autorisant la présence de moins d’outliers. L’accuracy est de 0,8482. Le GridSearch a donc bien permis d’augmenter la performance du modèle. On évalue la performance de ce modèle out of sample. Le training score est de 0,8482 tandis que le score sur le jeu test est de 0,8303. On peut noter que les deux scores sont proches. Le modèle apprend donc des données sans pour autant être en sur-ajustement.
+En moyenne, le SVC avec un kernel linéaire donne la meilleure accuracy (0,8477) et il est par ailleurs relativement stable selon les folds avec un écart-type de 0,006. On applique donc un GridSearch sur ce modèle pour tuner les hyperparamètres. On obtient un SVC avec un kernel linéaire dont le paramètre de régularisation C, est de 1000. La valeur de C élevée indique que le modèle est plus performant en autorisant la présence de moins d’outliers. L’accuracy est de 0,8482. Le GridSearch a donc bien permis d’augmenter la performance du modèle. On évalue la performance de ce modèle out of sample. Le training score est de 0,8482 tandis que le score sur le jeu test est de 0,8303. On peut noter que les deux scores sont proches. Le modèle apprend donc des données sans pour autant être en sur-ajustement.
+
 L’application d’un SVC linéaire permet d’observer l’influence des variables sur le modèle. On peut ainsi noter que le niveau de complexité moyen d’un jeu plus élevé est davantage associé à un jeu de stratégie. De même les jeux faisant intervenir une mécanique de lancé de dés ont un impact positif sur le modèle. En revanche, les jeux avec des mécaniques de management et de Variable Player Powers ont un effet négatif sur le modèle.
 
 *Figure N°11 : Importance des variables sur le SVC linéaire*
@@ -256,8 +252,7 @@ On applique ensuite des méthodes de SVM non linéaire en utilisant des kernel t
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/cm_rbf.png" alt="cm_rbf" style="width:400px;"/>
 
-On propose également une classification à l’aide d’un réseau de neurones afin de comparer les performances des différents modèles.
-On construit un premier réseau de neurones avec une couche cachée comprenant 100 neurones en entrée. On obtient un modèle avec une accuracy de 0,8853, ce qui signifie que le modèle est bien capable de prédire les classes. On peut noter que le modèle présente du sur-ajustement car l’erreur en validation est plus faible que l’erreur sur le jeu d’entraînement et ces deux erreurs ne convergent pas au fil des epochs.
+On propose également une classification à l’aide d’un réseau de neurones afin de comparer les performances des différents modèles. On construit un premier réseau de neurones avec une couche cachée comprenant 100 neurones en entrée. On obtient un modèle avec une accuracy de 0,8853, ce qui signifie que le modèle est bien capable de prédire les classes. On peut noter que le modèle présente du sur-ajustement car l’erreur en validation est plus faible que l’erreur sur le jeu d’entraînement et ces deux erreurs ne convergent pas au fil des epochs.
 
 *Figure N°13 : Evolution de la fonction de perte et de l'accuracy*
 
@@ -265,16 +260,16 @@ On construit un premier réseau de neurones avec une couche cachée comprenant 1
 
 On utilise un GridSearch pour tuner les paramètres du réseau de neurones. On obtient ainsi un réseau de neurones avec 2 couches cachées, chacune ayant 50 neurones en entrée. L’accuracy (0,8899) de ce modèle est plus élevée que celle du premier réseau de neurones. L’optimisation par GridSearch a donc bien permis d’améliorer les capacités prédictives du modèle.
 
-*Figure N°14 : Tableau de comparaison des indicateurs de performance*
+*Tableau N°3 : Tableau de comparaison des indicateurs de performance*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/tableau.JPG" alt="tableau" style="width:500px;"/>
 
-On compare les modèles que l’on a estimé à partir de différents indicateurs. A l’exception de la spécificité, tous les indicateurs indiquent que le réseau de neurones dont on a tuné les paramètres apporte les mêmes résultats. Cela implique que le réseau de neurones avec les paramètres par défaut parvient mieux à prédire les cas négatifs que les autres modèles. En revanche, le réseau de neurones optimisé parvient mieux à identifier les vrais cas positifs puisqu’il a un recall plus élevé. Un AUC de 1 indique que le modèle est capable de bien prédire les classes. Cela correspond à l’aire sous la courbe ROC, c’est-à-dire à un arbitrage entre un taux de vrais positifs élevés et un taux de faux positifs qui ne soit pas augmenté par la même occasion.
+On compare les modèles que l’on a estimés à partir de différents indicateurs. À l’exception de la spécificité, tous les indicateurs indiquent que le réseau de neurones dont on a tuné les paramètres apporte les mêmes résultats. Cela implique que le réseau de neurones avec les paramètres par défaut parvient mieux à prédire les cas négatifs que les autres modèles. En revanche, le réseau de neurones optimisé parvient mieux à identifier les vrais cas positifs puisqu’il a un recall plus élevé. Un AUC de 1 indique que le modèle est capable de bien prédire les classes. Cela correspond à l’aire sous la courbe ROC, c’est-à-dire à un arbitrage entre un taux de vrais positifs élevés et un taux de faux positifs qui ne soit pas augmenté par la même occasion.
 
 ## V. Conclusion 
 
-Notre étude se découpe finalement en 3 grandes parties. Dans une première partie, nous avons effectué une analyse exploratoire des données. Cela nous a permis de bien comprendre les différentes variables ainsi que les liens qui existent entre chacune d’entre elles. Dans un second temps, notre objectif était de prédire la note moyenne obtenue pour un jeu de société. Nous avons opté pour 2 catégories de modèles : les SVM ainsi que les réseaux de neurones. Afin d’identifier le modèle le plus performant en termes de mean square error (MSE), nous avons effectué une cross validation. Le réseau de neurones après optimisation des hyperparamètres est plus performant afin de prédire la note moyenne d’un jeu. 
+Notre étude se découpe finalement en 3 grandes parties. Dans une première partie, nous avons effectué une analyse exploratoire des données. Cela nous a permis de bien comprendre les différentes variables ainsi que les liens qui existent entre chacune d’entre elles. Dans un second temps, notre objectif était de prédire la note moyenne obtenue pour un jeu de société. Nous avons opté pour 2 catégories de modèles : les SVR ainsi que les réseaux de neurones. Afin d’identifier le modèle le plus performant en termes de mean square error (MSE), nous avons effectué une cross validation. Le réseau de neurones après optimisation des hyperparamètres est plus performant afin de prédire la note moyenne d’un jeu. 
 
-Par la suite, notre second objectif était de prédire si un jeu était un jeu de stratégie ou non. Notre variable étant déséquilibrée (plus de 0 que de 1), nous avons tout d'abord appliqué une méthode d’undersampling afin de rééquilibrer les classes. Au départ, nous avons rencontré un problème puisque lors de la modélisation nous obtenions une accuracy équivalente à 1 soit des prévisions parfaites, ce qui est quasiment impossible. Lorsque que nous avons regardé les variables les plus influentes de nos modèles, on a constaté que les différentes variables binaires faisant référence aux domaines étaient les plus influentes. Ceci est logique étant donné que la majorité des jeux de société de notre dataset ne possède qu’un seul domaine. Ainsi dès lors que pour un jeu de société toutes ces variables possèdent la valeur de 0, le modèle prédit la valeur de 1 pour le domaine stratégie, d'où une accuray équivalente ou très proche de 1. Nous avons ainsi appliqué tout comme pour la partie précédente, des méthodes de SVM ainsi que des réseaux de neurones en ne prenant pas en compte les variables binaires concernant le domaine du jeu. Nous comparons les différents modèles à l’aide de plusieurs indicateurs tels que la spécificité, le F1-score, le recall ainsi que l’AUC. Finalement, le réseau de neurones optimisé à l’aide d’un Grid Search est le modèle le plus performant afin de prédire si un jeu est un jeu de stratégie ou non. 
+Par la suite, notre second objectif était de prédire si un jeu était un jeu de stratégie ou non. Notre variable étant déséquilibrée (plus de 0 que de 1), nous avons tout d'abord appliqué une méthode d’undersampling afin de rééquilibrer les classes. Nous avons appliqué tout comme pour la partie précédente, des méthodes de SVM ainsi que des réseaux de neurones en ne prenant pas en compte les variables binaires concernant le domaine du jeu. Nous comparons les différents modèles à l’aide de plusieurs indicateurs tels que la spécificité, le F1-score, le recall ainsi que l’AUC. Finalement, le réseau de neurones optimisé à l’aide d’un Grid Search est le modèle le plus performant afin de prédire si un jeu est un jeu de stratégie ou non. 
 
-Enfin on peut noter que l'échantillon sur lequel on travaille est particulier. En effet, les utilisateurs du site BoardGaesGeek dont sont extraites les données sont probablement des personnes qui jouent très régulièrement aux jeux de société et recherchent à échanger avec une communauté de passionnés. Ces personnes ne sont pas nécessairement représentatives de l'ensemble de la population intéressée par les jeux de société. On peut par exemple le percevoir dans la répartition des domaines de jeux avec principalement des jeux de guerre et à l'inverse beaucoup moins de jeux familiaux. Ainsi, même si nous obtenons des modèles performants, on peut supposer qu'ils ne s'appliqueraient pas nécessairement bien si l'on s'intéressait à un autre public.
+Enfin, on peut noter que l'échantillon sur lequel on travaille est particulier. En effet, les utilisateurs du site BoardGaesGeek dont sont extraites les données sont probablement des personnes qui jouent très régulièrement aux jeux de société et recherchent à échanger avec une communauté de passionnés. Ces personnes ne sont pas nécessairement représentatives de l'ensemble de la population intéressée par les jeux de société. On peut par exemple le percevoir dans la répartition des domaines de jeux avec principalement des jeux de guerre et à l'inverse beaucoup moins de jeux familiaux. Ainsi, même si nous obtenons des modèles performants, on peut supposer qu'ils ne s'appliqueraient pas nécessairement bien si l'on s'intéressait à un autre public.
