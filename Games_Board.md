@@ -53,7 +53,8 @@ Finalement, nous obtenons une base constituée de 9 703 jeux de sociétés.
 
 Nous nous intéressons ensuite à la présence de valeurs potentiellement atypiques pour les variables quantitatives. Pour ce faire, nous avons tracé les boxplot de ces variables : 
 
-*Graphique N°1 : Boxplot des variables quantitatives*
+*Figure N°1 : Boxplot des variables quantitatives*
+
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/fig_2_intuition_svm.jpeg" alt="fig_2_intuition_svm" style="width:1400px;"/>
 
 - **Year_Published**
@@ -136,7 +137,8 @@ La variable *Domains* indique les genres des jeux de société. Tout comme pour 
 
 Afin de voir les liens entre les différentes variables explicatives, nous avons représenté une matrice des corrélations de spearman :
 
-*Figure N°1 : Matrice de corrélation*
+*Figure N°2 : Matrice de corrélation*
+
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation.jpeg" alt="correlation.jpeg" style="width:1400px;"/>
 
 On note 4 couples de variables fortement corrélées : 
@@ -168,7 +170,7 @@ En moyenne, les jeux de société de notre dataset ont une note moyenne de 6,62/
 
 ### F) Corrélation des variables quantitatives avec la variable *Rating_avg*
 
-*Figure N°2 : Matrice de corrélation*
+*Figure N°3 : Matrice de corrélation*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation_y.jpeg" alt="correlation_y" style="width:400px;"/>
 
@@ -176,7 +178,7 @@ La variable *BGG_rank*, est la variable la plus corrélée avec la note moyenne 
 
 On s'intéresse également à la distribution des notes selon les modalités des diverses variables qualitatives. On constate qu'il semble y avoir peut de variations liées aux mécaniques et aux domaines. On peut toutefois noter qu'il semble y avoir une différence de moyenne entre les jeux pour enfant et ceux qui ne le sont pas. Les jeux pour enfant (appartenant au domaine "Children") obtiennent une note plus faible en moyenne sur notre échantillon.
 
-*Figure N°3 : Distribution de la note moyenne en fonction de la variable Children*
+*Figure N°4 : Distribution de la note moyenne en fonction de la variable Children*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/Children.jpeg" alt="Children" style="width:400px;"/>
 
@@ -191,7 +193,7 @@ Préalablement à la modélisation, on procède à un rééchantillonnage. On di
 
 Le premier modèle que nous appliquons est un *SVR* (Support Vector Regression). Les SVR sont des modèles qui appartiennent à la famille de l’apprentissage supervisé. Les SVR permettent de modéliser des relations linéaires mais aussi non linéaires. Le SVM pour la régression consiste, non pas à maximiser les points en dehors des marges comme pour un problème de classification, mais à faire en sorte que le maximum de points se trouvent entre les marges. Le paramètre epsilon permet de faire varier la largeur des marges autour de l’hyperplan. Le paramètre C est un paramètre de régularisation qui indique l’importance attribuée à l’erreur par l’algorithme. Il est également possible de choisir le type de kernel à appliquer pour que les données soient linéairement séparables.
 
-*Figure N°3 : Evolution de l'erreur en cross validation*
+*Figure N°5 : Evolution de l'erreur en cross validation*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/folds.png" alt="folds" style="width:600px;"/>
 
@@ -199,13 +201,13 @@ Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel l
 
   On cherche à optimiser les hyperparamètres du SVR avec kernel rbf à l’aide d’un GridSearch. Le score mesuré par le GridSearch est le R2 du modèle. On obtient le modèle le plus performant avec les hyperparamètres suivants : C=10 et epsilon=0.1. 
 
-*Figure N°4 : Evolution du score selon les paramètres*
+*Figure N°6 : Evolution du score selon les paramètres*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/params.png" alt="params" style="width:600px;"/>
 
   On trace les courbes d’apprentissage associée au modèle. Cela permet de constater que plus on a de données mieux le modèle apprend. EN effet, on constate qu’à mesure que l’on rajoute des données, l’erreur du jeu de validation diminue et se rapproche de celle du jeu d’apprentissage.
 
-*Figure N°5 : Courbes d'apprentissage*
+*Figure N°7 : Courbes d'apprentissage*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/learning%20curve.png" alt="learning%20curve" style="width:600px;"/>
 
@@ -216,14 +218,14 @@ Dans un premier temps, nous entraînons un LinearSVR puis 3 SVR avec un kernel l
 
   On applique une deuxième méthode afin de prédire la note des jeux de société en estimant un réseau de neurones. On construit un premier réseau de neurones composé d’une couche cachée avec 100 neurones en entrée. On utilise la fonction softmax en sortie pour contraindre les prévisions à être positives car on cherche à prédire des notes qui sont comprises entre 0 et 10. Le jeu d’entraînement est divisé en un jeu d’entraînement et un jeu de validation afin d’évaluer l’évolution de l’erreur au cours des itérations. L’erreur du jeu d’entraînement décroît très vite et se stabilise rapidement. L’erreur sur le jeu de validation fluctue beaucoup sur les premières epochs. Au fur et à mesure des epochs, l’erreur en validation décroît et se rapproche de l’erreur en entraînement. L’algorithme continue donc d’apprendre à mesure qu’il observe de nouvelles données. On peut souligner qu’il y a un peu d’overfitting puisque l’erreur sur le jeu d’entrainement est plus faible que celle du jeu de validation. 
   
-*Figure N°6 : Evolution de la fonction de perte en fonction du nombre d'epochs*
+*Figure N°8 : Evolution de la fonction de perte en fonction du nombre d'epochs*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/ANN1.jpeg" alt="ANN1" style="width:600px;"/>
 
   
   On évalue ensuite la performance du modèle sur un échantillon test. On obtient un mse de 0,103, soit une erreur plus faible que celle obtenue avec le SVR. On cherche ensuite à améliorer les performances de ce réseau de neurones en en modifiant les paramètres à l’aide d’un GridSearch. Le modèle ayant 2 couches cachées avec 200 neurones chacunes ainsi qu’un learning rate de 0.001 est  le plus performant en termes de MSE. Sur l’échantillons test on obtient une erreur MSE légèrement plus faible (0,0936)
 
-*Figure N°7 : Evolution de la fonction de perte en fonction du nombre d'epochs pour le modèle obtenue à l'aide du GridSearch*
+*Figure N°9 : Evolution de la fonction de perte en fonction du nombre d'epochs pour le modèle obtenue à l'aide du GridSearch*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/pp.jpeg.jpeg" alt="ANN1" style="width:600px;"/>
 
@@ -237,33 +239,33 @@ Notre objectif dans cette seconde partie est d’appliquer des méthodes de clas
 Les jeux de stratégie ne représentent que 23% de la base de données, nous devons donc appliquer une méthode pour rééquilibrer les classes dans l’échantillon. Nous appliquons une méthode d’undersampling. L’échantillon original de 9302 jeux est ainsi réduit à 4358 jeux. On retire la base de données les différentes variables crées précédemment concernant le domaine auquel appartient le jeu, à l’exception de la variable « Strategy » qui est la variable que l’on cherche à prédire.
 Dans un premier temps, nous appliquons des méthodes de SVM. L’objectif des SVM est de séparer les classes par un hyperplan en maximisant l’écart entre les marges qui entourent cette frontière de décision. Nous estimons d’abord des SVM linéaires que nous comparons également à une régression logistique. Les SVM linéaires sont estimés avec les paramètres par défaut. On procède à une cross validation afin d’identifier le modèle le plus performant selon l’accuracy. 
 
-*Figure N°8 : Evolution de l'accuracy selon les folds en cross validation*
+*Figure N°10 : Evolution de l'accuracy selon les folds en cross validation*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/accuracy_l.png" alt="accuracy_l" style="width:600px;"/>
 
 En moyenne, le SVC avec un kernel linéaire donne la meilleure accuracy (0,8477) et il est par ailleurs relativement stable selon les folds avec un écart-type de 0,006. On applique donc un GridSearch sur ce modèle pour tuner les hyperparamètres. On obtient un SVC avec un kernel linéaire dont le paramètre de régularisation C est de 1000. La valeur de C élevée indique que le modèle est plus performant en autorisant la présence de moins d’outliers. L’accuracy est de 0,8482. Le GridSearch a donc bien permis d’augmenter la performance du modèle. On évalue la performance de ce modèle out of sample. Le training score est de 0,8482 tandis que le score sur le jeu test est de 0,8303. On peut noter que les deux scores sont proches. Le modèle apprend donc des données sans pour autant être en sur-ajustement.
 L’application d’un SVC linéaire permet d’observer l’influence des variables sur le modèle. On peut ainsi noter que le niveau de complexité moyen d’un jeu plus élevé est davantage associé à un jeu de stratégie. De même les jeux faisant intervenir une mécanique de lancé de dés ont un impact positif sur le modèle. En revanche, les jeux avec des mécaniques de management et de Variable Player Powers ont un effet négatif sur le modèle.
 
-*Figure N°9 : Importance des variables sur le SVC linéaire*
+*Figure N°11 : Importance des variables sur le SVC linéaire*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/importance.png" alt="importance" style="width:600px;"/>
 
 On applique ensuite des méthodes de SVM non linéaire en utilisant des kernel tricks. On estime des SVM avec trois kernel différents (polynomial, rbf et linéaire) et les paramètres par défaut. En cross validation, c’est le modèle avec un kernel rbf qui permet d’obtenir l’accuracy la plus élevée. On procède à un GridSearch pour tuner les hyperparamètres. On obtient comme meilleur modèle un SVC avec un kernel rbf, un paramètre de régularisation C=100 et un gamma=0,01. L’accuracy sur le jeu d’entraînement est de 0,911 et elle est de 0,8773 sur le jeu test. On peut noter un léger sur-ajustement du modèle, cela est notamment dû au fait que le SVC non linéaire présente davantage de paramètres à estimer par rapport au SVC linéaire. Le fait de recourir à un SVC non linéaire permet d'améliorer l'accuracy.
 
-*Figure N°10 : Matrice de confusion du SVC avec kernel rbf*
+*Figure N°12 : Matrice de confusion du SVC avec kernel rbf*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/cm_rbf.png" alt="cm_rbf" style="width:400px;"/>
 
 On propose également une classification à l’aide d’un réseau de neurones afin de comparer les performances des différents modèles.
 On construit un premier réseau de neurones avec une couche cachée comprenant 100 neurones en entrée. On obtient un modèle avec une accuracy de 0,8853, ce qui signifie que le modèle est bien capable de prédire les classes. On peut noter que le modèle présente du sur-ajustement car l’erreur en validation est plus faible que l’erreur sur le jeu d’entraînement et ces deux erreurs ne convergent pas au fil des epochs.
 
-*Figure N°11 : Evolution de la fonction de perte et de l'accuracy*
+*Figure N°13 : Evolution de la fonction de perte et de l'accuracy*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/courbes_accuracy.png" alt="courbes_accuracy" style="width:500px;"/>
 
 On utilise un GridSearch pour tuner les paramètres du réseau de neurones. On obtient ainsi un réseau de neurones avec 2 couches cachées, chacune ayant 50 neurones en entrée. L’accuracy (0,8899) de ce modèle est plus élevée que celle du premier réseau de neurones. L’optimisation par GridSearch a donc bien permis d’améliorer les capacités prédictives du modèle.
 
-*Figure N°12 : Tableau de comparaison des indicateurs de performance*
+*Figure N°14 : Tableau de comparaison des indicateurs de performance*
 
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/tableau.JPG" alt="tableau" style="width:500px;"/>
 
