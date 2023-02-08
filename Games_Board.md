@@ -262,7 +262,12 @@ On utilise un GridSearch pour tuner les paramètres du réseau de neurones. On o
 
 *Tableau N°3 : Tableau de comparaison des indicateurs de performance*
 
-<img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/tableau.JPG" alt="tableau" style="width:500px;"/>
+|Spécificité|Recall|F1-score|AUC|
+|-:|-------:|------:|------:|
+|LinearSVC| 0,8227272|0,843|0,843|0,843|
+|RBF SVC| 0,857143|0,885|0,884|0,885|
+|Réseaux de neurones | 0,860674|0,886|0,885|0,886|
+|Réseaux de neurones (Avec GridSearch)| 0,860310|0,890|0,891|0,890|
 
 On compare les modèles que l’on a estimés à partir de différents indicateurs. À l’exception de la spécificité, tous les indicateurs indiquent que le réseau de neurones dont on a tuné les paramètres apporte les mêmes résultats. Cela implique que le réseau de neurones avec les paramètres par défaut parvient mieux à prédire les cas négatifs que les autres modèles. En revanche, le réseau de neurones optimisé parvient mieux à identifier les vrais cas positifs puisqu’il a un recall plus élevé. Un AUC de 1 indique que le modèle est capable de bien prédire les classes. Cela correspond à l’aire sous la courbe ROC, c’est-à-dire à un arbitrage entre un taux de vrais positifs élevés et un taux de faux positifs qui ne soit pas augmenté par la même occasion.
 
