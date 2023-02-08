@@ -169,6 +169,7 @@ En moyenne, les jeux de société de notre dataset ont une note moyenne de 6,62/
 ### F) Corrélation des variables quantitatives avec la variable *Rating_avg*
 
 *Figure N°2 : Matrice de corrélation*
+
 <img src="https://github.com/AnneLauure/Dossier-SVM/blob/main/Image/correlation_y.jpeg" alt="correlation_y" style="width:400px;"/>
 
 La variable *BGG_rank*, est la variable la plus corrélée avec la note moyenne d’un jeu. Plus, le jeu est positionné en haut du classement, plus la note moyenne est élevée. La complexité ainsi que l’âge minimal recommandé pour y jouer ont un impact positif relativement important sur la note moyenne du jeu. En revanche, les variables concernant le nombre de joueurs maximum ou minimum sont peu corrélées avec la note moyenne d'un jeu de société.
